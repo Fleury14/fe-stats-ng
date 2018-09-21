@@ -13,6 +13,9 @@ export class NavItems {
     },{
         title: 'Player Rankings',
         url: ''
+    }, {
+        title: 'Current Races',
+        url: ''
     }];
 
     public getItems():INavItem[] {
