@@ -1,0 +1,19 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarText">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item" *ngFor="let item of navList">
+					<a routerLink="{{ item.url }}" routerLinkActive="active" class="nav-link">{{ item.title }}</a>
+        </li>
+			</ul>
+			<span class="navbar-text ml-3">
+				<form action="/" class="mb-0">
+					<input type="hidden" name="page_id" value="12">
+					<input class="header-search" type="text" name="player" placeholder="Player name..">
+					<button type="sumbit" class="btn-sm btn-default header-search-button">Search</button>
+				</form>
+			</span>
+		</div>
+	</nav>
