@@ -22,6 +22,10 @@ const routes:Route[] = [{
 }, {
     path: 'current-races',
     component: CurrentRacesComponent
+}, {
+    path: '',
+    redirectTo: 'main',
+    pathMatch: 'full'
 }];
 
 @NgModule({
