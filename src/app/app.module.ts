@@ -10,12 +10,14 @@ import { FeStatsComponent } from './components/fe-stats/fe-stats.component';
 import { CurrentRacesComponent } from './components/current-races/current-races.component';
 
 import { AppRoutingModule, routingComponents } from './app.routing.module';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
-    routingComponents
+    routingComponents,
+    FooterComponent
   ],
   imports: [
     BrowserModule, AppRoutingModule
