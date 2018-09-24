@@ -3,9 +3,12 @@
     <div class="col-md-3 race-status">
       <h2 class="audiowide">{{ race.statetext }}</h2>
       <div class="race-clock press-start" *ngIf="race.statetext.toLowerCase() === 'in progress'">Time here</div>
+    </div> <!-- end status column-->
+    <div class="col-md-9 race-info text-center">
+      <h2 class="text-center audiowide">{{ race.numentrants }} participant<span *ngIf="race.numentrants && race.numentrants != 1">s</span></h2>
     </div>
-  </div>
-</div>
+  </div> <!-- end looped row-->
+</div> <!-- end container-->
 
 
 
