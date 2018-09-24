@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RaceService } from '../../services/race.service';
 
 @Component({
   selector: 'fes-current-races',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CurrentRacesComponent implements OnInit {
 
-  constructor() { }
+  currentRace: any[] = []; // TODO: consider creating a type for race, even if its awfully big
+
+  constructor(private _race: RaceService) { }
 
   ngOnInit() {
+    this._race.getCurrentRaces().subscribe(resp => {
+      this.currentRace = this._filterFF4Races(resp['races']);
+      console.log(this.currentRace);
+    });
+  }
+
+  private _filterFF4Races(races: any[]) {
+    return races.filter(race => race.game.abbrev === 'ff4hacks');
   }
 
 }
