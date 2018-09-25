@@ -44,4 +44,8 @@ export class PlayerStatsComponent implements OnInit {
     });
   }
 
+  public roundTo1Place(percent) {
+    return Math.floor(percent * 1000) / 10;
+  }
+
 }

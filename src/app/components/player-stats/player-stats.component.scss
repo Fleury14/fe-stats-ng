@@ -101,6 +101,12 @@
             flex-grow: 1;
         }
     }
+
+    .summary-right {
+        .progress ngb-progressbar span {
+            color: pink;
+        }
+    }
 }
 
 .x-days {

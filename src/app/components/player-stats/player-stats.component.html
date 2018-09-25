@@ -25,7 +25,7 @@
           <div class="col-md-3 summary-left">
             <p>Total races</p>
             <h2 class="audiowide">{{ playerStats.stats.totalRaces }}</h2>
-          </div>
+          </div> <!-- end total races column -->
           <div class="col-md-3 summary-mid">
 							<div class="summary-row">
 								<p>1st place finishes:</p>
@@ -43,7 +43,44 @@
 								<p>Forfeits:</p>
 								<p class="audiowide">{{ playerStats.stats.totalQuits }}</p>
 							</div>
-						</div>
+            </div> <!-- end total finishes column -->
+            <div class="col-md-6 summary-right">
+              <div class="summary-row">
+                <div class="progress">
+                  <p><ngb-progressbar class="gold-bg" showValue="true" [value]="roundTo1Place(playerStats.stats.totalFirstPlace / playerStats.stats.totalRaces)"></ngb-progressbar></p>
+                </div>
+              </div>
+              <div class="summary-row">
+                <div class="progress">
+                  <p><ngb-progressbar showValue="true" [value]="roundTo1Place(playerStats.stats.totalSecondPlace / playerStats.stats.totalRaces)"></ngb-progressbar></p>
+                </div>
+              </div>
+              <div class="summary-row">
+                <div class="progress">
+                  <p><ngb-progressbar showValue="true" [value]="roundTo1Place(playerStats.stats.totalThirdPlace / playerStats.stats.totalRaces)"></ngb-progressbar></p>
+                </div>
+              </div>
+              <div class="summary-row">
+                <div class="progress">
+                  <p><ngb-progressbar showValue="true" [value]="roundTo1Place(playerStats.stats.totalQuits / playerStats.stats.totalRaces)"></ngb-progressbar></p>
+                </div>
+              </div>
+              <!-- <div class="summary-row">
+                <div class="progress">
+                  <div class="progress-bar silver-bg" role="progressbar" style="width: <?php echo getPercentOfTotal($overall_stats->stats->totalSecondPlace); ?>%;" aria-valuenow="<?php echo getPercentOfTotal($overall_stats->stats->totalSecondPlace); ?>"><?php echo getPercentOfTotal($overall_stats->stats->totalSecondPlace); ?>%</div>
+                </div>
+              </div>
+              <div class="summary-row">
+                <div class="progress">
+                  <div class="progress-bar bronze-bg" role="progressbar" style="width: <?php echo getPercentOfTotal($overall_stats->stats->totalThirdPlace); ?>%;" aria-valuenow="<?php echo getPercentOfTotal($overall_stats->stats->totalThirdPlace); ?>"><?php echo getPercentOfTotal($overall_stats->stats->totalThirdPlace); ?>%</div>
+                </div>
+              </div>
+              <div class="summary-row">
+                <div class="progress">
+                  <div class="progress-bar maroon-bg" role="progressbar" style="width: <?php echo getPercentOfTotal($overall_stats->stats->totalQuits); ?>%;" aria-valuenow="<?php echo getPercentOfTotal($overall_stats->stats->totalQuits); ?>"><?php echo getPercentOfTotal($overall_stats->stats->totalQuits); ?>%</div>
+                </div>
+              </div> -->
+            </div>
         </div> <!-- end row -->
       </div> <!-- end container -->
     </div><!-- end race summary -->
