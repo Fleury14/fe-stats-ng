@@ -11,7 +11,7 @@ const routes:Route[] = [{
     path: 'main',
     component: MainComponent
 },{
-    path: 'player-stats',
+    path: 'player-stats/:player',
     component: PlayerStatsComponent
 }, {
     path: 'fe-stats',
