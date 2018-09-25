@@ -90,6 +90,18 @@
           
         </div>
         <!--- End # of races in x days section -->
+        <!-- begin win-loss section -->
+					<h2 class="text-center mt-5">Win Loss record against other racers (Scrollable)</h2>
+
+					<div class="row win-loss-row">
+						<div class="col-sm-12">
+						</div>
+						<div *ngFor="let opponent of opponentWinLoss" class="col-sm-2 win-loss" [ngStyle]="{ 'background-color': 'rgb(0, 0, ' + (opponent.wins) / (opponent.wins + opponent.losses) * 200 + ')' }">
+							<p class="audiowide">{{ opponent.name }}<span class="ml-1 badge badge-primary">0</span></p>
+							<p class="press-start">{{ opponent.wins }}-{{ opponent.losses }}</p>
+						</div>
+					</div>
+					<!-- End win-loss section -->
       </div> <!-- end container -->
     </div><!-- end race summary -->
   </section>
