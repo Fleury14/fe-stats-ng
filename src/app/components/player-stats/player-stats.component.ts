@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PlayerService } from '../../services/player.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'fes-player-stats',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlayerStatsComponent implements OnInit {
 
-  constructor() { }
+  public defaultName = 'Fleury14';
+  public playerName: string;
+  public playerStats;
+  public playerHistory;
+
+  constructor(private _playerSvc: PlayerService, private _router: Router) { }
 
   ngOnInit() {
+
+    // get playername from params
   }
 
 }
