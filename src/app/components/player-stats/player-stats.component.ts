@@ -14,6 +14,9 @@ export class PlayerStatsComponent implements OnInit {
   public playerName: string;
   public playerStats;
   public playerHistory;
+  public past7Days:number;
+  public past14Days:number;
+  public past30Days:number;
 
   constructor(private _playerSvc: PlayerService, private _actRoute: ActivatedRoute, public time: TimeService) { }
 
@@ -26,6 +29,7 @@ export class PlayerStatsComponent implements OnInit {
       if (this.playerName) {
         this._getStats(this.playerName);
         this._getHistory(this.playerName);
+        this._parseHistory(this.playerHistory);
       }
     });
   }
@@ -46,6 +50,16 @@ export class PlayerStatsComponent implements OnInit {
 
   public roundTo1Place(percent) {
     return Math.floor(percent * 1000) / 10;
+  }
+
+  private _parseHistory(history) {
+    this.past7Days = this.past14Days = this.past30Days = 0;
+    history.pastRaces.forEach(race => {
+      if(Date.now() - race.date < 604800) this.past7Days++;
+      if(Date.now() - race.date < 1209600) this.past14Days++;
+      if(Date.now() - race.date < 2592000) this.past30Days++;
+    });
+
   }
 
 }
