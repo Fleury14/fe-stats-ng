@@ -47,7 +47,7 @@
             <div class="col-md-6 summary-right">
               <div class="summary-row">
                 <div class="progress">
-                  <p><ngb-progressbar class="gold-bg" showValue="true" [value]="roundTo1Place(playerStats.stats.totalFirstPlace / playerStats.stats.totalRaces)"></ngb-progressbar></p>
+                  <p><ngb-progressbar class="progress-test" showValue="true" [value]="roundTo1Place(playerStats.stats.totalFirstPlace / playerStats.stats.totalRaces)"></ngb-progressbar></p>
                 </div>
               </div>
               <div class="summary-row">
@@ -62,7 +62,7 @@
               </div>
               <div class="summary-row">
                 <div class="progress">
-                  <p><ngb-progressbar showValue="true" [value]="roundTo1Place(playerStats.stats.totalQuits / playerStats.stats.totalRaces)"></ngb-progressbar></p>
+                  <p><ngb-progressbar showValue="true" type="danger" [value]="roundTo1Place(playerStats.stats.totalQuits / playerStats.stats.totalRaces)"></ngb-progressbar></p>
                 </div>
               </div>
               <!-- <div class="summary-row">
