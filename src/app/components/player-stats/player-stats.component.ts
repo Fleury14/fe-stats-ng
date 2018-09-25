@@ -19,6 +19,11 @@ export class PlayerStatsComponent implements OnInit {
   public past14Days:number;
   public past30Days:number;
   public opponentWinLoss: any[] = [];
+  public racetypes = {
+    leagueQual: [],
+    leagueRo32: [],
+    leagueRo16: []
+  };
 
   constructor(private _playerSvc: PlayerService, private _actRoute: ActivatedRoute, public time: TimeService, private _race: RaceService) { }
 
@@ -70,11 +75,9 @@ export class PlayerStatsComponent implements OnInit {
       if((Date.now() - race.date * 1000) / 1000 < 1209600) this.past14Days++;
       if((Date.now() - race.date * 1000) / 1000 < 2592000) this.past30Days++;
       const myTime = this._race.findMyTime(race, this.playerName);
-      // console.log(this.playerName);
       race.results.forEach(result => {
         if ((result.player.toLowerCase() !== this.playerName.toLowerCase()) && (result.time !== -1 && myTime !== null ))  {
           // check if opponent exists
-          // console.log(this.opponentWinLoss.filter(record => {record.name.toLowerCase() == result.player.toLowerCase()}));
           if (this.opponentWinLoss.filter(record => {
             return record.name.toLowerCase() == result.player.toLowerCase();
           }).length === 0) {
@@ -96,9 +99,13 @@ export class PlayerStatsComponent implements OnInit {
 					}
         }
       });
+      if (race.goal.includes('J2KC2T4S3BF2NE3$X2Y2GWZ')) this.racetypes.leagueQual.push(race);
+      if (race.goal.includes('JK2PCT3S2BF2NE3X2Y2GZ')) this.racetypes.leagueRo32.push(race);
+      if (race.goal.includes('JK2PC3T3S2BF2NE3X2Y2GZ')) this.racetypes.leagueRo16.push(race);
     });
     this.opponentWinLoss.sort(this.compareTotalGamesPlayed);
-    console.log(this.opponentWinLoss);
+    console.log(this.racetypes.leagueQual.length);
+    // console.log(this.opponentWinLoss);
 
     
 
