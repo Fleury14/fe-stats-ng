@@ -9,6 +9,7 @@ import { FooterComponent } from './footer/footer.component';
 import { AppRoutingModule, routingComponents } from './app.routing.module';
 
 import { RaceService } from './services/race.service';
+import { PlayerService } from './services/player.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { RaceService } from './services/race.service';
   imports: [
     BrowserModule, AppRoutingModule, HttpClientModule
   ],
-  providers: [RaceService],
+  providers: [RaceService, PlayerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
