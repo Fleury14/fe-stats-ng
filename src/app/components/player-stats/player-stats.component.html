@@ -1,5 +1,21 @@
 <main>
   <section>
     <h1>Statslol</h1>
+    <div *ngIf="playerStats" class="sub-banner">
+      <h1 class="audiowide">{{ playerStats.player.name}}</h1>
+      <p class="audiowide">Rank: #{{ playerStats.stats.rank }}</p>
+    </div>
+    <div class="race-summary" *ngIf="playerStats">
+      <div class="container">
+        <div class="row time-rows">
+          <div class="col-md-6 text-center">
+            <p>Date of first race:</p>
+            <h2>{{ playerStats.stats.firstRaceDate * 1000 | date }}</h2>
+            <a *ngIf="playerStats.player.api == 'twitch' && playerStats.player.channel" href='http://twitch.tv/{{playerStats.player.channel}}' target="_blank"><button class="twitch-button mt-3">Twitch Channel</button></a>
+          </div>
+
+        </div> <!-- end row -->
+      </div> <!-- end container -->
+    </div><!-- end race summary -->
   </section>
 </main>
