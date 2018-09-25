@@ -78,7 +78,6 @@ export class PlayerStatsComponent implements OnInit {
           if (this.opponentWinLoss.filter(record => {
             return record.name.toLowerCase() == result.player.toLowerCase();
           }).length === 0) {
-            console.log('opponent doesnt exist');
             this.opponentWinLoss.push({
               name: result.player,
               wins: 0,
