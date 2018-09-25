@@ -97,7 +97,7 @@
 						<div class="col-sm-12">
 						</div>
 						<div *ngFor="let opponent of opponentWinLoss" class="col-sm-2 win-loss" [ngStyle]="{ 'background-color': 'rgb(0, 0, ' + (opponent.wins) / (opponent.wins + opponent.losses) * 200 + ')' }">
-							<p class="audiowide">{{ opponent.name }}<span class="ml-1 badge badge-primary">0</span></p>
+							<p class="audiowide">{{ opponent.name }}<span class="ml-1 badge badge-primary">{{ getRating(opponent.name) }}</span></p>
 							<p class="press-start">{{ opponent.wins }}-{{ opponent.losses }}</p>
 						</div>
 					</div>

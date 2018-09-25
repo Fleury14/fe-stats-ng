@@ -6,7 +6,13 @@ import { map } from 'rxjs/operators'
 
 export class PlayerService {
 
-    constructor (private _http: HttpClient) {}
+    public leaderboard;
+
+    constructor (private _http: HttpClient) {
+        this._http.get('http://api.speedrunslive.com/leaderboard/ff4hacks?season=0').subscribe(response => {
+            this.leaderboard = response;
+        })
+    }
 
     public getPlayerBaseStats(player: string) {
         return this._http.get(`http://api.speedrunslive.com/stat?player=${player}&game=ff4hacks&page=1`);
@@ -20,7 +26,7 @@ export class PlayerService {
         return this._http.get(`http://api.speedrunslive.com/leaderboard/ff4hacks?season=0`);
     }
 
-    public getRating(player: string) {
+    public getRatingSingleReq(player: string) {
         return this._http.get(`http://api.speedrunslive.com/leaderboard/ff4hacks?season=0`).pipe(
             map(response => {
                 let rating = 0;
@@ -30,6 +36,13 @@ export class PlayerService {
                 return rating;
             })
         )
+    }
+
+    public getRating(player:string) {
+        let rating = 0;
+        const target = this.leaderboard.leaders.find(leader => leader.name.toLowerCase() === player.toLowerCase());
+        if (target && target.trueskill) rating = Math.floor(target.trueskill);
+        return rating;
     }
 
 }

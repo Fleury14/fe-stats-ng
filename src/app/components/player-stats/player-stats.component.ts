@@ -50,6 +50,10 @@ export class PlayerStatsComponent implements OnInit {
     });
   }
 
+  public getRating(player:string) {
+    return this._playerSvc.getRating(player);
+  }
+
   public roundTo1Place(percent) {
     return Math.floor(percent * 1000) / 10;
   }
