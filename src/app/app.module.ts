@@ -10,6 +10,7 @@ import { AppRoutingModule, routingComponents } from './app.routing.module';
 
 import { RaceService } from './services/race.service';
 import { PlayerService } from './services/player.service';
+import { TimeService } from './services/time.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { PlayerService } from './services/player.service';
   imports: [
     BrowserModule, AppRoutingModule, HttpClientModule
   ],
-  providers: [RaceService, PlayerService],
+  providers: [RaceService, PlayerService, TimeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

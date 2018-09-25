@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PlayerService } from '../../services/player.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { TimeService } from '../../services/time.service';
 
 @Component({
   selector: 'fes-player-stats',
@@ -14,7 +15,7 @@ export class PlayerStatsComponent implements OnInit {
   public playerStats;
   public playerHistory;
 
-  constructor(private _playerSvc: PlayerService, private _actRoute: ActivatedRoute) { }
+  constructor(private _playerSvc: PlayerService, private _actRoute: ActivatedRoute, public time: TimeService) { }
 
   ngOnInit() {
 

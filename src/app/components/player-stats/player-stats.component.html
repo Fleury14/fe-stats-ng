@@ -13,7 +13,13 @@
             <h2>{{ playerStats.stats.firstRaceDate * 1000 | date }}</h2>
             <a *ngIf="playerStats.player.api == 'twitch' && playerStats.player.channel" href='http://twitch.tv/{{playerStats.player.channel}}' target="_blank"><button class="twitch-button mt-3">Twitch Channel</button></a>
           </div>
-
+          <div class="col-md-6 text-center">
+            <p>Total time played:</p>
+            <h3 *ngIf="time.formatTotalTime(playerStats.stats.totalTimePlayed).days > 0">{{ time.formatTotalTime(playerStats.stats.totalTimePlayed).days }} days</h3>
+            <h3 *ngIf="time.formatTotalTime(playerStats.stats.totalTimePlayed).hours > 0">{{ time.formatTotalTime(playerStats.stats.totalTimePlayed).hours }} hours</h3>
+            <h3 *ngIf="time.formatTotalTime(playerStats.stats.totalTimePlayed).minutes > 0">{{ time.formatTotalTime(playerStats.stats.totalTimePlayed).minutes }} minutes</h3>
+            <h3 *ngIf="time.formatTotalTime(playerStats.stats.totalTimePlayed).seconds > 0">{{ time.formatTotalTime(playerStats.stats.totalTimePlayed).seconds }} seconds</h3>
+          </div>
         </div> <!-- end row -->
       </div> <!-- end container -->
     </div><!-- end race summary -->
