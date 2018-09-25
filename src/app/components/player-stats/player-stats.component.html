@@ -21,6 +21,30 @@
             <h3 *ngIf="time.formatTotalTime(playerStats.stats.totalTimePlayed).seconds > 0">{{ time.formatTotalTime(playerStats.stats.totalTimePlayed).seconds }} seconds</h3>
           </div>
         </div> <!-- end row -->
+        <div class="row summary-margin">
+          <div class="col-md-3 summary-left">
+            <p>Total races</p>
+            <h2 class="audiowide">{{ playerStats.stats.totalRaces }}</h2>
+          </div>
+          <div class="col-md-3 summary-mid">
+							<div class="summary-row">
+								<p>1st place finishes:</p>
+								<p class="audiowide">{{ playerStats.stats.totalFirstPlace }}</p>
+							</div>
+							<div class="summary-row">
+								<p>2nd place finishes:</p>
+								<p class="audiowide">{{ playerStats.stats.totalSecondPlace }}</p>
+							</div>
+							<div class="summary-row">
+								<p>3rd place finishes:</p>
+								<p class="audiowide">{{ playerStats.stats.totalThirdPlace }}</p>
+							</div>
+							<div class="summary-row">
+								<p>Forfeits:</p>
+								<p class="audiowide">{{ playerStats.stats.totalQuits }}</p>
+							</div>
+						</div>
+        </div> <!-- end row -->
       </div> <!-- end container -->
     </div><!-- end race summary -->
   </section>
