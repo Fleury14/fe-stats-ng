@@ -29,7 +29,6 @@ export class PlayerStatsComponent implements OnInit {
       if (this.playerName) {
         this._getStats(this.playerName);
         this._getHistory(this.playerName);
-        this._parseHistory(this.playerHistory);
       }
     });
   }
@@ -45,6 +44,7 @@ export class PlayerStatsComponent implements OnInit {
     this._playerSvc.getRaceHistory(player).subscribe(resp => {
       this.playerHistory = resp;
       console.log('history', this.playerHistory);
+      this._parseHistory(this.playerHistory);
     });
   }
 
@@ -54,10 +54,10 @@ export class PlayerStatsComponent implements OnInit {
 
   private _parseHistory(history) {
     this.past7Days = this.past14Days = this.past30Days = 0;
-    history.pastRaces.forEach(race => {
-      if(Date.now() - race.date < 604800) this.past7Days++;
-      if(Date.now() - race.date < 1209600) this.past14Days++;
-      if(Date.now() - race.date < 2592000) this.past30Days++;
+    history.pastraces.forEach(race => {
+      if((Date.now() - race.date * 1000) / 1000 < 604800) this.past7Days++;
+      if((Date.now() - race.date * 1000) / 1000 < 1209600) this.past14Days++;
+      if((Date.now() - race.date * 1000) / 1000 < 2592000) this.past30Days++;
     });
 
   }

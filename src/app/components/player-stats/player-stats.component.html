@@ -65,9 +65,31 @@
                   <p><ngb-progressbar showValue="true" type="danger" [value]="roundTo1Place(playerStats.stats.totalQuits / playerStats.stats.totalRaces)"></ngb-progressbar></p>
                 </div>
               </div>
-            
-            </div>
+            </div> <!-- end progress bar column -->
         </div> <!-- end row -->
+        <!--- Begin # of race in x days section -->
+        <div class="row mb-5">
+          <div class="col-md-4">
+            <div class="p-3 x-days d-flex flex-column text-center">
+              <p>Races in last 7 days</p>
+              <h2 class="audiowide">{{ past7Days }}</h2>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-3 x-days d-flex flex-column text-center">
+              <p>Races in last 14 days</p>
+              <h2 class="audiowide">{{ past14Days }}</h2>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-3 x-days d-flex flex-column text-center">
+              <p>Races in last 30 days</p>
+              <h2 class="audiowide">{{ past30Days }}</h2>
+            </div>
+          </div>
+          
+        </div>
+        <!--- End # of races in x days section -->
       </div> <!-- end container -->
     </div><!-- end race summary -->
   </section>
