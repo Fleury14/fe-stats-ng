@@ -27,6 +27,11 @@ export class PlayerStatsComponent implements OnInit {
       leagueQual: null,
       leagueRo32: null,
       leagueRo16: null
+    },
+    avg: {
+      leagueQual: null,
+      leagueRo32: null,
+      leagueRo16: null
     }
   };
 
@@ -109,8 +114,13 @@ export class PlayerStatsComponent implements OnInit {
       if (race.goal.includes('JK2PC3T3S2BF2NE3X2Y2GZ')) this.racetypes.leagueRo16.push(race);
     });
     this.opponentWinLoss.sort(this.compareTotalGamesPlayed);
-    console.log(this.racetypes.leagueQual);
+    console.log('ro16', this.racetypes.leagueRo16);
     this.racetypes.best.leagueQual = this.findBestTime(this.racetypes.leagueQual);
+    this.racetypes.best.leagueRo32 = this.findBestTime(this.racetypes.leagueRo32);
+    this.racetypes.best.leagueRo16 = this.findBestTime(this.racetypes.leagueRo16);
+    this.racetypes.avg.leagueQual = this.getLast10Avg(this.racetypes.leagueQual);
+    this.racetypes.avg.leagueRo32 = this.getLast10Avg(this.racetypes.leagueRo32);
+    this.racetypes.avg.leagueRo16 = this.getLast10Avg(this.racetypes.leagueRo16);
     console.log('best qual', this.racetypes.best.leagueQual);
     // console.log(this.opponentWinLoss);
 
@@ -132,6 +142,32 @@ export class PlayerStatsComponent implements OnInit {
     });
     console.log('race with best time', races[0].results.filter(result => result.player.toLowerCase() === this.playerName.toLowerCase())[0].time);
     return races[0].results.filter(result => result.player.toLowerCase() === this.playerName.toLowerCase())[0]['time'];
+  }
+
+  public getLast10Avg(races: any[]) {
+    const NUMOFGAMESFORRECENT = 10
+    // sort races by date
+    races.sort((a, b) => {
+      return parseInt(a.date) - parseInt(b.date);
+    });
+    const recent = [];
+    for (let i = 0; i < NUMOFGAMESFORRECENT; i++) {
+      if (i < races.length) {
+        recent.push(races[i]);
+      }
+    }
+    let timetotal = 0;
+    let count = 0;
+    recent.forEach(race => {
+      const myTime = this._race.findMyTime(race, this.playerName);
+      if (myTime) {
+        timetotal += myTime;
+        count++;
+        // don't count forfeits
+      }
+    });
+    return Math.floor(timetotal / count);
+
   }
 
 }
