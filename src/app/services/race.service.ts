@@ -11,4 +11,14 @@ export class RaceService {
         return this._http.get('http://api.speedrunslive.com/races');
     }
 
+    public findMyTime(race, player_name:string) {
+		let time = null;
+		if (race !== null) {
+            race.results.forEach(result => {
+                if (result.player.toLowerCase() == player_name.toLowerCase() && result.time !== -1) time = result.time;
+            });
+		} 
+		return time;
+    }
+
 }

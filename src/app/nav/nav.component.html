@@ -9,11 +9,10 @@
         </li>
 			</ul>
 			<span class="navbar-text ml-3">
-				<form action="/" class="mb-0">
-					<input type="hidden" name="page_id" value="12">
-					<input class="header-search" type="text" name="player" placeholder="Player name..">
-					<button type="sumbit" class="btn-sm btn-default header-search-button">Search</button>
-				</form>
+				<div action="/player-stats/" class="mb-0">
+					<input class="header-search" [(ngModel)]="searchText" type="text" name="player" placeholder="Player name..">
+					<button (click)="playerStats(e)" class="btn-sm btn-default header-search-button">Find Stats</button>
+				</div>
 			</span>
 		</div>
 	</nav>
