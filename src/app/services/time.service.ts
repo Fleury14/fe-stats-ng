@@ -35,7 +35,7 @@ export class TimeService {
 
     }
 
-    public formateRaceTime(timeInSecs:number):string {
+    public formatRaceTime(timeInSecs:number):string {
         let hours = Math.floor(timeInSecs / 3600);
         let minutes = Math.floor(timeInSecs / 60 % 60);
         let seconds = Math.floor(timeInSecs % 60);

@@ -91,53 +91,53 @@
         </div>
         <!--- End # of races in x days section -->
         <!-- begin win-loss section -->
-					<h2 class="text-center mt-5">Win Loss record against other racers (Scrollable)</h2>
+        <h2 class="text-center mt-5">Win Loss record against other racers (Scrollable)</h2>
 
-					<div class="row win-loss-row">
-						<div class="col-sm-12">
-						</div>
-						<div *ngFor="let opponent of opponentWinLoss" class="col-sm-2 win-loss" [ngStyle]="{ 'background-color': 'rgb(0, 0, ' + (opponent.wins) / (opponent.wins + opponent.losses) * 200 + ')' }">
-							<p class="audiowide">{{ opponent.name }}<span class="ml-1 badge" [ngClass]="{ 'badge-success': getRating(playerStats.player.name) > getRating(opponent.name), 'badge-danger': getRating(playerStats.player.name) < getRating(opponent.name) }">{{ getRating(opponent.name) }}</span></p>
-							<p class="press-start">{{ opponent.wins }}-{{ opponent.losses }}</p>
-						</div>
-					</div>
-          <!-- End win-loss section -->
-          <!--- Begin Flag type section -->
-					<div class="row">
-              <div class="col-sm-4 mini-table mr-0">
-                <p class="text-center mini-table-header">League Qualifiers</p>
-                <div class="d-flex justify-content-between">
-                  <p>Best Time:</p> 
-                  <p></p>
-                </div>
-                <div class="d-flex justify-content-between">
-                  <p>Last 10 Avg:</p> 
-                  <p></p>
-                </div>
+        <div class="row win-loss-row">
+          <div class="col-sm-12">
+          </div>
+          <div *ngFor="let opponent of opponentWinLoss" class="col-sm-2 win-loss" [ngStyle]="{ 'background-color': 'rgb(0, 0, ' + (opponent.wins) / (opponent.wins + opponent.losses) * 200 + ')' }">
+            <p class="audiowide">{{ opponent.name }}<span class="ml-1 badge" [ngClass]="{ 'badge-success': getRating(playerStats.player.name) > getRating(opponent.name), 'badge-danger': getRating(playerStats.player.name) < getRating(opponent.name) }">{{ getRating(opponent.name) }}</span></p>
+            <p class="press-start">{{ opponent.wins }}-{{ opponent.losses }}</p>
+          </div>
+        </div>
+        <!-- End win-loss section -->
+        <!--- Begin Flag type section -->
+        <div class="row">
+            <div class="col-sm-4 mini-table mr-0">
+              <p class="text-center mini-table-header">League Qualifiers</p>
+              <div class="d-flex justify-content-between">
+                <p>Best Time:</p> 
+                <p>{{ time.formatRaceTime( racetypes.best.leagueQual ) }}</p>
               </div>
-              <div class="col-sm-4 mini-table mr-0">
-                <p class="text-center mini-table-header">League Ro.32</p>
-                <div class="d-flex justify-content-between">
-                  <p>Best Time:</p> 
-                  <p></p>
-                </div>
-                <div class="d-flex justify-content-between">
-                  <p>Last 10 Avg:</p> 
-                  <p></p>
-                </div>
+              <div class="d-flex justify-content-between">
+                <p>Last 10 Avg:</p> 
+                <p></p>
               </div>
-              <div class="col-sm-4 mini-table mr-0">
-                <p class="text-center mini-table-header">League Ro.16</p>
-                <div class="d-flex justify-content-between">
-                  <p>Best Time:</p> 
-                  <p></p>
-                </div>
-                <div class="d-flex justify-content-between">
-                  <p>Last 10 Avg:</p> 
-                  <p></p>
-                </div>
+            </div>
+            <div class="col-sm-4 mini-table mr-0">
+              <p class="text-center mini-table-header">League Ro.32</p>
+              <div class="d-flex justify-content-between">
+                <p>Best Time:</p> 
+                <p></p>
               </div>
-            </div><!-- End flag type section -->
+              <div class="d-flex justify-content-between">
+                <p>Last 10 Avg:</p> 
+                <p></p>
+              </div>
+            </div>
+            <div class="col-sm-4 mini-table mr-0">
+              <p class="text-center mini-table-header">League Ro.16</p>
+              <div class="d-flex justify-content-between">
+                <p>Best Time:</p> 
+                <p></p>
+              </div>
+              <div class="d-flex justify-content-between">
+                <p>Last 10 Avg:</p> 
+                <p></p>
+              </div>
+            </div>
+          </div><!-- End flag type section -->
       </div> <!-- end container -->
     </div><!-- end race summary -->
   </section>

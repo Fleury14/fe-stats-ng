@@ -22,7 +22,12 @@ export class PlayerStatsComponent implements OnInit {
   public racetypes = {
     leagueQual: [],
     leagueRo32: [],
-    leagueRo16: []
+    leagueRo16: [],
+    best: {
+      leagueQual: null,
+      leagueRo32: null,
+      leagueRo16: null
+    }
   };
 
   constructor(private _playerSvc: PlayerService, private _actRoute: ActivatedRoute, public time: TimeService, private _race: RaceService) { }
@@ -104,11 +109,29 @@ export class PlayerStatsComponent implements OnInit {
       if (race.goal.includes('JK2PC3T3S2BF2NE3X2Y2GZ')) this.racetypes.leagueRo16.push(race);
     });
     this.opponentWinLoss.sort(this.compareTotalGamesPlayed);
-    console.log(this.racetypes.leagueQual.length);
+    console.log(this.racetypes.leagueQual);
+    this.racetypes.best.leagueQual = this.findBestTime(this.racetypes.leagueQual);
+    console.log('best qual', this.racetypes.best.leagueQual);
     // console.log(this.opponentWinLoss);
 
     
 
+  }
+
+  public findBestTime(races: any[]) {
+    races.sort((a, b) => {
+      let myTimeA = 999999;
+      let myTimeB = 999999;
+      a.results.forEach(result => {
+        if (result.player.toLowerCase() === this.playerName.toLowerCase() && result.time !== -1) myTimeA = result.time; 
+      });
+      b.results.forEach(result => {
+        if (result.player.toLowerCase() === this.playerName.toLowerCase() && result.time !== -1) myTimeB = result.time; 
+      });
+      return myTimeA - myTimeB;
+    });
+    console.log('race with best time', races[0].results.filter(result => result.player.toLowerCase() === this.playerName.toLowerCase())[0].time);
+    return races[0].results.filter(result => result.player.toLowerCase() === this.playerName.toLowerCase())[0]['time'];
   }
 
 }
