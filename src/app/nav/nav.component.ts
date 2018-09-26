@@ -21,7 +21,6 @@ export class NavComponent implements OnInit {
   }
 
   public playerStats(e:any) {
-    console.log(this.searchText);
     this._router.navigate(['player-stats', this.searchText]);
   }
 

@@ -122,14 +122,12 @@ export class PlayerStatsComponent implements OnInit, OnDestroy {
       if (race.goal.includes('JK2PC3T3S2BF2NE3X2Y2GZ')) this.racetypes.leagueRo16.push(race);
     });
     this.opponentWinLoss.sort(this.compareTotalGamesPlayed);
-    console.log('ro16', this.racetypes.leagueRo16);
     this.racetypes.best.leagueQual = this.findBestTime(this.racetypes.leagueQual);
     this.racetypes.best.leagueRo32 = this.findBestTime(this.racetypes.leagueRo32);
     this.racetypes.best.leagueRo16 = this.findBestTime(this.racetypes.leagueRo16);
     this.racetypes.avg.leagueQual = this.getLast10Avg(this.racetypes.leagueQual);
     this.racetypes.avg.leagueRo32 = this.getLast10Avg(this.racetypes.leagueRo32);
     this.racetypes.avg.leagueRo16 = this.getLast10Avg(this.racetypes.leagueRo16);
-    console.log('best qual', this.racetypes.best.leagueQual);
     // console.log(this.opponentWinLoss);
 
     
@@ -148,7 +146,6 @@ export class PlayerStatsComponent implements OnInit, OnDestroy {
       });
       return myTimeA - myTimeB;
     });
-    console.log('race with best time', races[0].results.filter(result => result.player.toLowerCase() === this.playerName.toLowerCase())[0].time);
     return races[0].results.filter(result => result.player.toLowerCase() === this.playerName.toLowerCase())[0]['time'];
   }
 
