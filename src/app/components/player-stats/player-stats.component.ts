@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PlayerService } from '../../services/player.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { TimeService } from '../../services/time.service';
 import { RaceService } from '../../services/race.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'fes-player-stats',
   templateUrl: './player-stats.component.html',
   styleUrls: ['./player-stats.component.scss']
 })
-export class PlayerStatsComponent implements OnInit {
+export class PlayerStatsComponent implements OnInit, OnDestroy {
 
   public defaultName = 'Fleury14';
   public playerName: string;
@@ -34,6 +35,7 @@ export class PlayerStatsComponent implements OnInit {
       leagueRo16: null
     }
   };
+  public subs:Subscription[] = [];
 
   constructor(private _playerSvc: PlayerService, private _actRoute: ActivatedRoute, public time: TimeService, private _race: RaceService) { }
 
@@ -50,19 +52,25 @@ export class PlayerStatsComponent implements OnInit {
     });
   }
 
-  private _getStats(player: string) {
-    this._playerSvc.getPlayerBaseStats(player).subscribe(resp => {
-      this.playerStats = resp;
-      console.log('stats', this.playerStats);
+  ngOnDestroy() {
+    this.subs.forEach(sub => {
+      sub.unsubscribe();
     })
   }
 
+  private _getStats(player: string) {
+    this.subs.push(this._playerSvc.getPlayerBaseStats(player).subscribe(resp => {
+      this.playerStats = resp;
+      console.log('stats', this.playerStats);
+    }));
+  }
+
   private _getHistory(player: string) {
-    this._playerSvc.getRaceHistory(player).subscribe(resp => {
+    this.subs.push(this._playerSvc.getRaceHistory(player).subscribe(resp => {
       this.playerHistory = resp;
       console.log('history', this.playerHistory);
       this._parseHistory(this.playerHistory);
-    });
+    }));
   }
 
   public getRating(player:string) {

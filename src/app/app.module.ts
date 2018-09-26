@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -21,7 +22,7 @@ import { TimeService } from './services/time.service';
     FooterComponent
   ],
   imports: [
-    BrowserModule, AppRoutingModule, HttpClientModule, NgbModule
+    BrowserModule, AppRoutingModule, HttpClientModule, NgbModule, FormsModule
   ],
   providers: [RaceService, PlayerService, TimeService],
   bootstrap: [AppComponent]
