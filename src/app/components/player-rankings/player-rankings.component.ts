@@ -61,6 +61,15 @@ export class PlayerRankingsComponent implements OnInit {
     for (let i = this.rankIndexes.grandMaster; i < this.rankIndexes.master; i++) {
       this.categories.master.push(this.leaderboard.leaders[i]);
     }
+    for (let i = this.rankIndexes.master; i < this.rankIndexes.gold; i++) {
+      this.categories.gold.push(this.leaderboard.leaders[i]);
+    }
+    for (let i = this.rankIndexes.gold; i < this.rankIndexes.silver; i++) {
+      this.categories.silver.push(this.leaderboard.leaders[i]);
+    }
+    for (let i = this.rankIndexes.silver; i < this.rankIndexes.bronze; i++) {
+      this.categories.bronze.push(this.leaderboard.leaders[i]);
+    }
 
      // create index tiers
     //  $bronze_place_end = $total_players;
