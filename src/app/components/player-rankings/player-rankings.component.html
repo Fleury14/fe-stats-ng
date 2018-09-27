@@ -1,3 +1,64 @@
-<p>
-  player-rankings works!
-</p>
+<div *ngIf="this.leaderboard">
+  <div class="champion text-center">
+    <h2 class="press-start text-uppercase">Champion</h2>
+    <h3>{{ categories.champion[0].name }}</h3>
+    <h4>{{ categories.champion[0].trueskill }}</h4>
+  </div>  
+</div>
+
+<!-- <div class="container">
+  <div class="row lunarian">
+      <h2 class="text-center w-100 mb-2 press-start text-uppercase">Lunarians</h2>
+      <?php for ($i = $lunarian_place_start; $i <= $lunarian_place_end; $i++ ): ?>
+      <div class="col-md-4 col-sm-6">
+          <h4 class="text-center"><?php echo $player_list[$i - 1]->name ?></h4>
+          <h5 class="text-center press-start"><?php echo floor($player_list[$i - 1]->trueskill); ?></h5>
+      </div>
+      <?php endfor; ?>
+  </div> 
+  <div class="row grand-master">
+      <h2 class="text-center w-100 mb-2 press-start text-uppercase">Grand Masters</h2>
+      <?php for ($i = $gm_place_start; $i <= $gm_place_end; $i++ ): ?>
+      <div class="col-md-2 col-sm-4">
+          <h5 class="text-center"><?php echo $player_list[$i - 1]->name ?></h5>
+          <h6 class="text-center press-start"><?php echo floor($player_list[$i - 1]->trueskill); ?></h6>
+      </div>
+      <?php endfor; ?>
+  </div> 
+  <div class="row master">
+      <h2 class="text-center w-100 mb-2 press-start text-uppercase">Masters</h2>
+      <?php for ($i = $master_place_start; $i <= $master_place_end; $i++ ): ?>
+      <div class="col-md-2 col-sm-4">
+          <h6 class="text-center"><?php echo $player_list[$i - 1]->name ?></h6>
+          <p class="text-center press-start"><?php echo floor($player_list[$i - 1]->trueskill); ?></p>
+      </div>
+      <?php endfor; ?>
+  </div>
+  <div class="row gold">
+      <h2 class="text-center w-100 mb-2 press-start text-uppercase">Gold</h2>
+      <?php for ($i = $gold_place_start; $i <= $gold_place_end; $i++ ): ?>
+      <div class="col-md-3 col-sm-4 d-flex align-items-center">
+          <p class="text-center mr-3">#<?php echo $i; ?> <?php echo $player_list[$i - 1]->name ?>:</p>
+          <p class="text-center press-start"><?php echo floor($player_list[$i - 1]->trueskill); ?></p>
+      </div>
+      <?php endfor; ?>
+  </div> 
+  <div class="row silver">
+      <h2 class="text-center w-100 mb-2 press-start text-uppercase">Silver</h2>
+      <?php for ($i = $silver_place_start; $i <= $silver_place_end; $i++ ): ?>
+      <div class="col-md-3 col-sm-4 d-flex align-items-center">
+          <p class="text-center mr-3">#<?php echo $i; ?> <?php echo $player_list[$i - 1]->name ?>:</p>
+          <p class="text-center press-start"><?php echo floor($player_list[$i - 1]->trueskill); ?></p>
+      </div>
+      <?php endfor; ?>
+  </div>
+  <div class="row bronze">
+      <h2 class="text-center w-100 mb-2 press-start text-uppercase">Bronze</h2>
+      <?php for ($i = $bronze_place_start; $i <= $bronze_place_end; $i++ ): ?>
+      <div class="col-md-3 col-sm-4 d-flex align-items-center">
+          <p class="text-center mr-3">#<?php echo $i; ?> <?php echo $player_list[$i - 1]->name ?>:</p>
+          <p class="text-center press-start"><?php echo floor($player_list[$i - 1]->trueskill); ?></p>
+      </div>
+      <?php endfor; ?>
+  </div> 
+</div>  -->
