@@ -138,6 +138,40 @@
               </div>
             </div>
           </div><!-- End flag type section -->
+          <div class="row">
+            <div class="col-sm-12">
+              <h2 class="text-center">Recent Races</h2>
+            </div>
+            <div class="col-sm-12 d-flex flex-wrap justify-content-center">
+              <div class="race-tag" (click)="switchRecent(i)" *ngFor="let race of recents; index as i" [ngClass]="{ 'active-tag': currentRecent === i }">
+                <span>{{ i + 1 }}</span>
+              </div>
+            </div>
+            <div id="race-data" *ngIf="recents.length > 0" class="w-100">
+              <h2 class="past-race-header text-center mb-0">{{ recents[currentRecent].date * 1000 | date:'medium' }}</h2>
+              <h2 class="past-race-header text-center">{{ recents[currentRecent].goal }}</h2>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Rank</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Expected Finish</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">SRL Change</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let result of recents[currentRecent].results; index as ind" scope="row">
+                    <td class="press-start">{{ ind + 1 }}</td>
+                    <td class="audiowide">{{ result.player }}</td>
+                    <td class="press-start" [ngClass]="{ 'positive-change': result.expectedFinish > result.place, 'negative-change': result.expectedFinish < result.place }">{{ result.expectedFinish }}</td>
+                    <td class="press-start blue-highlight">{{ result.time === -1 ? 'Forfeit' : time.formatRaceTime(result.time) }}</td>
+                    <td class="press-start">{{ result.oldtrueskill }} > <span *ngIf="result.trueskillchange > 0" [ngClass]="{ 'positive-change': result.trueskillchange > 0, 'negative-change': result.trueskillchange < 0 }">+</span><span [ngClass]="{ 'positive-change': result.trueskillchange > 0, 'negative-change': result.trueskillchange < 0 }">{{ result.trueskillchange }}</span> > {{ result.newtrueskill }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
       </div> <!-- end container -->
     </div><!-- end race summary -->
   </section>
