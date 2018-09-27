@@ -14,6 +14,7 @@ export class PlayerStatsComponent implements OnInit, OnDestroy {
 
   public defaultName = 'Fleury14';
   private _NUMOFRECENTS = 20;
+  public currentRecent = 0;
   public recents = [];
   public playerName: string;
   public playerStats;
@@ -62,7 +63,12 @@ export class PlayerStatsComponent implements OnInit, OnDestroy {
   }
 
   private _getRecents(player: string) {
-    this.subs.push();
+    this.subs.push(this._playerSvc.getRecents(this.playerName, this._NUMOFRECENTS).subscribe(resp => {
+      const races: any[] = resp['pastraces'];
+      races.sort((a, b) => b.date - a.date);
+      this.recents = races;
+      console.log('recents:', this.recents);
+    }));
   }
 
   private _getStats(player: string) {
