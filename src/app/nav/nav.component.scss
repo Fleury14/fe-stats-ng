@@ -1,0 +1,23 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 5;
+}
+
+.navbar-text form {
+  margin-bottom: 0;
+}
+
+.header-search {
+  padding: 0 20px;
+}
+
+.header-search-button {
+  margin-left: 10px;
+}
+
+.user-name {
+  color: #eee;
+}
