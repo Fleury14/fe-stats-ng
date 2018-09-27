@@ -13,7 +13,7 @@ import { Subscription } from 'rxjs';
 export class PlayerStatsComponent implements OnInit, OnDestroy {
 
   public defaultName = 'Fleury14';
-  private _NUMOFRECENTS = 20;
+  public _NUMOFRECENTS = 20;
   public currentRecent = 0;
   public recents = [];
   public playerName: string;
@@ -66,6 +66,12 @@ export class PlayerStatsComponent implements OnInit, OnDestroy {
     this.subs.push(this._playerSvc.getRecents(this.playerName, this._NUMOFRECENTS).subscribe(resp => {
       const races: any[] = resp['pastraces'];
       races.sort((a, b) => b.date - a.date);
+      races.forEach(race => {
+        this._addZScore(race);
+        race.results.sort((a, b) => b.oldtrueskill - a.oldtrueskill);
+        race.results.forEach( (result, index) => result['expectedFinish'] = index + 1 );
+        race.results.sort((a, b) => a.place - b.place);
+      });
       this.recents = races;
       console.log('recents:', this.recents);
     }));
@@ -84,6 +90,59 @@ export class PlayerStatsComponent implements OnInit, OnDestroy {
       console.log('history', this.playerHistory);
       this._parseHistory(this.playerHistory);
     }));
+  }
+
+  public switchRecent(target: number) {
+    // console.log(target);
+    this.currentRecent = target;
+  }
+
+  // begin recent parsing functions
+  private _getLongestTime(race) {
+    let longestTime = 0;
+    race.results.forEach(result => {
+        if (result.time > longestTime) longestTime = result.time;
+    });
+    return longestTime;
+  }
+
+  private _addZScore(race) {
+    // This function takes in a race and assigns a standard mean, standard deviation for the race and a z-score for each individual playeer
+
+    const raceTimes = [];
+    const raceLongTime = this._getLongestTime(race);
+    const forfeitPenalty = 60 * 5;
+    // put all times into one array
+    race.results.forEach(result => {
+        if (result.time === -1) {
+            raceTimes.unshift(raceLongTime + forfeitPenalty);
+        } else {
+            raceTimes.unshift(result.time);
+        }
+    });
+    
+    // calculate mean
+    let standaredMean = raceTimes.reduce((a, b) => a + b, 0) / raceTimes.length;
+    race['stdMean'] = standaredMean;
+
+    const sqrdDiff = [];
+    // populate array of squared differences
+    raceTimes.forEach(time => {
+        if (time === -1) time = raceLongTime + forfeitPenalty;
+        sqrdDiff.unshift(Math.pow(time - standaredMean, 2));
+    });
+    
+    // get the mean of squred differences
+    let sqrdMean = sqrdDiff.reduce((a, b) => a + b, 0) / sqrdDiff.length;
+    // and from that get std dev and assign it to race
+    let stdDev = Math.sqrt(sqrdMean);
+    race['stdDev'] = stdDev;
+
+    // assign each calculated z-score to the respective result
+    race.results.forEach(result => {
+        result['zScore'] = ((result.time === -1 ? raceLongTime + forfeitPenalty : result.time) - race.stdMean) / race.stdDev;
+    })
+    
   }
 
   public getRating(player:string) {
