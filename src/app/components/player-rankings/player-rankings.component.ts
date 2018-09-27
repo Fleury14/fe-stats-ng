@@ -52,8 +52,14 @@ export class PlayerRankingsComponent implements OnInit {
     })
 
     this.categories.champion.push(this.leaderboard.leaders[0]);
-    for (let i = 2; i < this.rankIndexes.lunarian; i++) {
+    for (let i = 1; i < this.rankIndexes.lunarian; i++) {
       this.categories.lunarian.push(this.leaderboard.leaders[i]);
+    }
+    for (let i = this.rankIndexes.lunarian; i < this.rankIndexes.grandMaster; i++) {
+      this.categories.grandMaster.push(this.leaderboard.leaders[i]);
+    }
+    for (let i = this.rankIndexes.grandMaster; i < this.rankIndexes.master; i++) {
+      this.categories.master.push(this.leaderboard.leaders[i]);
     }
 
      // create index tiers

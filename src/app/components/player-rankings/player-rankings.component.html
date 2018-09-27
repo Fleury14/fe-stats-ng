@@ -1,9 +1,32 @@
-<div *ngIf="this.leaderboard">
+<div *ngIf="this.leaderboard" class="open-sans">
   <div class="champion text-center">
     <h2 class="press-start text-uppercase">Champion</h2>
     <h3>{{ categories.champion[0].name }}</h3>
-    <h4>{{ categories.champion[0].trueskill }}</h4>
-  </div>  
+    <h4>{{ categories.champion[0].trueskill | number:'1.0-0' }}</h4>
+  </div>
+  <div class="container">
+      <div class="row lunarian">
+        <h2 class="text-center w-100 mb-2 press-start text-uppercase">Lunarians</h2>
+        <div class="col-md-4 col-sm-6" *ngFor="let player of categories.lunarian">
+            <h4 class="text-center">{{ player.name }}</h4>
+            <h5 class="text-center press-start">{{ player.trueskill | number:'1.0-0' }}</h5>
+        </div>
+      </div>
+      <div class="row grand-master">
+        <h2 class="text-center w-100 mb-2 press-start text-uppercase">Grand Masters</h2>
+        <div class="col-md-2 col-sm-4" *ngFor="let player of categories.grandMaster">
+            <h5 class="text-center">{{ player.name }}</h5>
+            <h6 class="text-center press-start">{{ player.trueskill | number:'1.0-0' }}</h6>
+        </div>
+      </div>
+      <div class="row master">
+        <h2 class="text-center w-100 mb-2 press-start text-uppercase">Masters</h2>
+        <div class="col-md-2 col-sm-4" *ngFor="let player of categories.master">
+            <h6 class="text-center">{{ player.name }}</h6>
+            <p class="text-center press-start">{{ player.trueskill | number:'1.0-0' }}</p>
+        </div>
+    </div>
+  </div> <!-- end container -->  
 </div>
 
 <!-- <div class="container">
