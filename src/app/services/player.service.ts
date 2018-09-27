@@ -22,6 +22,10 @@ export class PlayerService {
         return this._http.get(`http://api.speedrunslive.com/pastraces?player=${player}&game=ff4hacks&page=1&pageSize=500`);
     }
 
+    public getRecents(player:string, num:number) {
+        return this._http.get(`http://api.speedrunslive.com/pastraces?player=${player}&game=ff4hacks&page=1&pageSize=${num}`);
+    }
+
     public getLeaderBoard() {
         return this._http.get(`http://api.speedrunslive.com/leaderboard/ff4hacks?season=0`);
     }
