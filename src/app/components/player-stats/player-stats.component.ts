@@ -13,6 +13,8 @@ import { Subscription } from 'rxjs';
 export class PlayerStatsComponent implements OnInit, OnDestroy {
 
   public defaultName = 'Fleury14';
+  private _NUMOFRECENTS = 20;
+  public recents = [];
   public playerName: string;
   public playerStats;
   public playerHistory;
@@ -48,6 +50,7 @@ export class PlayerStatsComponent implements OnInit, OnDestroy {
       if (this.playerName) {
         this._getStats(this.playerName);
         this._getHistory(this.playerName);
+        this._getRecents(this.playerName);
       }
     });
   }
@@ -56,6 +59,10 @@ export class PlayerStatsComponent implements OnInit, OnDestroy {
     this.subs.forEach(sub => {
       sub.unsubscribe();
     })
+  }
+
+  private _getRecents(player: string) {
+    this.subs.push();
   }
 
   private _getStats(player: string) {
