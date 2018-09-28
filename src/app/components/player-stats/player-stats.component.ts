@@ -53,6 +53,7 @@ export class PlayerStatsComponent implements OnInit, OnDestroy {
   public xAxisLabelLine = 'Country';
   public showYAxisLabelLine = true;
   public yAxisLabelLine = 'Population';
+  // public curveLine() {}
 
   public colorSchemeLine = {
     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']

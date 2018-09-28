@@ -176,6 +176,7 @@
       <div class="chart-container">
         <ngx-charts-line-chart
         [scheme]="colorSchemeLine"
+        [curve]="d3.curveCardinal"
         [results]="lineData"
         [gradient]="gradientLine"
         [xAxis]="showXAxisLine"
