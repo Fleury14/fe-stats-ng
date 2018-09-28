@@ -173,6 +173,23 @@
             </div>
           </div>
       </div> <!-- end container -->
+      <div class="chart-container">
+        <ngx-charts-line-chart
+        [scheme]="colorSchemeLine"
+        [results]="lineData"
+        [gradient]="gradientLine"
+        [xAxis]="showXAxisLine"
+        [yAxis]="showYAxisLine"
+        [legend]="showLegendLine"
+        [showXAxisLabel]="showXAxisLabelLine"
+        [showYAxisLabel]="showYAxisLabelLine"
+        [xAxisLabel]="xAxisLabelLine"
+        [yAxisLabel]="yAxisLabelLine"
+        [autoScale]="autoScaleLine"
+        >
+        </ngx-charts-line-chart>
+      </div>
+      
     </div><!-- end race summary -->
   </section>
 </main>

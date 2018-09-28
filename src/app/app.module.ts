@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
+import {NgxChartsModule} from '@swimlane/ngx-charts';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -22,7 +24,7 @@ import { TimeService } from './services/time.service';
     FooterComponent
   ],
   imports: [
-    BrowserModule, AppRoutingModule, HttpClientModule, NgbModule, FormsModule
+    BrowserModule, BrowserAnimationsModule, AppRoutingModule, HttpClientModule, NgbModule, FormsModule, NgxChartsModule
   ],
   providers: [RaceService, PlayerService, TimeService],
   bootstrap: [AppComponent]
