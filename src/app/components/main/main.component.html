@@ -1,9 +1,44 @@
-<main>
+<main class="open-sans">
   <div class="jumbotron mb-0">
     <h1 class="display-4 text-center">FF4 FE Race Stats</h1>
   </div>
   <div class="current-races-banner d-flex justify-content-center align-items-center">
     <a routerLink="/current-races"><h2 class="text-center audiowide">There <span>{{ numOfRaces === 1 && 'is' || 'are' }}</span> {{ numOfRaces }} race{{ numofRaces !== 1 && 's' || '' }} currently being run.</h2></a>
+  </div>
+  <div class="container-fluid ticker-row mb-5" *ngIf="recents">
+    <div class="row">
+      <div class="col-sm-1 d-sm-flex d-none justify-content-center align-items-center ticker-col"></div>
+      <div class="col-sm-2 recent-cell d-flex justify-content-center flex-column p-1">
+        <p class="mb-0"><u class="recent-cell-header">{{ recents[recentStart].date * 1000 | date:'short' }}</u></p>
+        <p class="mb-0"><strong class="gold-text">1st:</strong> {{ recents[recentStart].results[0].player }}</p>
+        <p class="mb-0"><strong class="silver-text">2nd:</strong> {{ recents[recentStart].results[1].player }}</p>
+        <p class="mb-0"><strong class="bronze-text">3rd:</strong> {{ recents[recentStart].results[2].player }}</p>
+      </div>
+      <div class="col-sm-2 recent-cell d-flex justify-content-center flex-column p-1">
+        <p class="mb-0"><u class="recent-cell-header">{{ recents[recentStart + 1].date * 1000 | date:'short' }}</u></p>
+        <p class="mb-0"><strong class="gold-text">1st:</strong> {{ recents[recentStart + 1].results[0].player }}</p>
+        <p class="mb-0"><strong class="silver-text">2nd:</strong> {{ recents[recentStart + 1].results[1].player }}</p>
+        <p class="mb-0"><strong class="bronze-text">3rd:</strong> {{ recents[recentStart + 1].results[2].player }}</p>
+      </div>
+      <div class="col-sm-2 recent-cell d-flex justify-content-center flex-column p-1">
+        <p class="mb-0"><u class="recent-cell-header">{{ recents[recentStart + 2].date * 1000 | date:'short' }}</u></p>
+        <p class="mb-0"><strong class="gold-text">1st:</strong> {{ recents[recentStart + 2].results[0].player }}</p>
+        <p class="mb-0"><strong class="silver-text">2nd:</strong> {{ recents[recentStart + 2].results[1].player }}</p>
+        <p class="mb-0"><strong class="bronze-text">3rd:</strong> {{ recents[recentStart + 2].results[2].player }}</p>
+      </div>
+      <div class="col-sm-2 recent-cell d-flex justify-content-center flex-column p-1">
+        <p class="mb-0"><u class="recent-cell-header">{{ recents[recentStart + 3].date * 1000 | date:'short' }}</u></p>
+        <p class="mb-0"><strong class="gold-text">1st:</strong> {{ recents[recentStart + 3].results[0].player }}</p>
+        <p class="mb-0"><strong class="silver-text">2nd:</strong> {{ recents[recentStart + 3].results[1].player }}</p>
+        <p class="mb-0"><strong class="bronze-text">3rd:</strong> {{ recents[recentStart + 3].results[2].player }}</p>
+      </div>
+      <div class="col-sm-2 recent-cell d-flex justify-content-center flex-column p-1">
+        <p class="mb-0"><u class="recent-cell-header">{{ recents[recentStart + 4].date * 1000 | date:'short' }}</u></p>
+        <p class="mb-0"><strong class="gold-text">1st:</strong> {{ recents[recentStart + 4].results[0].player }}</p>
+        <p class="mb-0"><strong class="silver-text">2nd:</strong> {{ recents[recentStart + 4].results[1].player }}</p>
+        <p class="mb-0"><strong class="bronze-text">3rd:</strong> {{ recents[recentStart + 4].results[2].player }}</p>
+      </div>
+    </div>
   </div>
 </main>
 

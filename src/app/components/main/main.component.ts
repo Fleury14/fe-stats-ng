@@ -10,6 +10,9 @@ export class MainComponent implements OnInit {
 
   public numOfRaces: number;
   private ff4Races;
+  public recents;
+  public recentStart = 0;
+  public recentEnd = 4;
 
   constructor(private _race: RaceService) { }
 
@@ -17,6 +20,10 @@ export class MainComponent implements OnInit {
     this._race.getCurrentRaces().subscribe(resp => {
       this.ff4Races = resp['races'].filter(race => race.game.abbrev === 'ff4hacks');
       this.numOfRaces = this.ff4Races.length;
+    });
+    this._race.getRecents().subscribe(resp => {
+      this.recents = resp['pastraces'];
+      console.log('recents', this.recents);
     })
   }
 
