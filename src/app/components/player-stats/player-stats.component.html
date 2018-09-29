@@ -140,6 +140,46 @@
           </div><!-- End flag type section -->
           <div class="row">
             <div class="col-sm-12">
+              <h2 class="text-center text-uppercase press-start mt-5">SRL Rating Change Over Time</h2>
+              <div class="chart-container">
+                <ngx-charts-line-chart
+                [scheme]="colorSchemeLine"
+                [curve]="curveLine"
+                [results]="lineData"
+                [gradient]="gradientLine"
+                [xAxis]="showXAxisLine"
+                [yAxis]="showYAxisLine"
+                [legend]="showLegendLine"
+                [showXAxisLabel]="showXAxisLabelLine"
+                [showYAxisLabel]="showYAxisLabelLine"
+                [xAxisLabel]="xAxisLabelLine"
+                [yAxisLabel]="yAxisLabelLine"
+                [autoScale]="autoScaleLine"
+                >
+                </ngx-charts-line-chart>
+              </div>
+            </div>
+            <div class="col-sm-12">
+                <h2 class="text-center text-uppercase press-start mt-5">Z-score for last 20 races</h2>
+                <p class="text-center">(Lower is better)</p>
+                <div class="chart-container">
+                    <ngx-charts-bar-vertical
+                    [scheme]="colorSchemeLine"
+                    [results]="barData"
+                    [gradient]="gradientBar"
+                    [xAxis]="showXAxisBar"
+                    [yAxis]="showYAxisBar"
+                    [legend]="showLegendBar"
+                    [showXAxisLabel]="showXAxisLabelBar"
+                    [showYAxisLabel]="showYAxisLabelBar"
+                    [xAxisLabel]="xAxisLabelBar"
+                    [yAxisLabel]="yAxisLabelBar">
+                  </ngx-charts-bar-vertical>
+                </div>
+              </div>
+          </div> <!-- end charts row -->
+          <div class="row mt-5">
+            <div class="col-sm-12">
               <h2 class="text-center">Recent Races</h2>
             </div>
             <div class="col-sm-12 d-flex flex-wrap justify-content-center">
@@ -173,6 +213,8 @@
             </div>
           </div>
       </div> <!-- end container -->
+      
+      
     </div><!-- end race summary -->
   </section>
 </main>
