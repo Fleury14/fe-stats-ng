@@ -12,7 +12,7 @@
             <div class="col-md-4 order-2">
                 <div class="racer-list">
                 <div class="racer-container" *ngFor="let racer of getRacers(race)">
-                    <span class="racer">{{ racer.name }}</span>
+                    <a routerLink="../player-stats/{{racer.name}}"><span class="racer">{{ racer.name }}</span></a>
                     <span class="badge badge-primary">{{ racer.trueskill }}</span>
                 </div>
                 </div>
