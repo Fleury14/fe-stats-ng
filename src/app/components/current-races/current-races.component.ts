@@ -34,6 +34,23 @@ export class CurrentRacesComponent implements OnInit {
         totalSkill += parseInt(entrants[key].trueskill);
       }
       race['totalSkill'] = totalSkill;
+
+      const flagsPos = race.goal.indexOf('flags=');
+      const endFlagsPos = race.goal.indexOf('&amp');
+      let flags = race.goal.slice(flagsPos + 6, endFlagsPos);
+      if (flags.indexOf('J2KC2T4S3BF2NE3$X2Y2GWZ') !== -1) { flags += ' (League Qualifier)'; }
+      else if (flags.indexOf('JK2PCT3S2BF2NE3X2Y2GZ') !== -1) { flags += ' (League Ro.32)'; }
+      else if (flags.indexOf('JK2PC3T3S2BF2NE3X2Y2GZ') !== -1) { flags += ' (League Ro.16'; }
+      race['parsedFlags'] = flags;
+      // $flagsPos = strpos($race->goal, 'flags=');
+      // $endFlagPos = strpos($race->goal, '&amp');
+      // $flags = substr($race->goal, $flagsPos + 6, $endFlagPos - $flagsPos - 6);
+      // ?>
+      // <p class="current-race-flags">Flags: <?php echo $flags;
+      //     if ($flags == 'J2KC2T4S3BF2NE3$X2Y2GWZ') { echo ' (League Qualifier)'; }
+      //     if ($flags == 'JK2PCT3S2BF2NE3X2Y2GZ') { echo ' (League Ro.32)'; }
+      //     if ($flags == 'JK2PC3T3S2BF2NE3X2Y2GZ') { echo ' (League Playoffs)'; }
+      // ?>
     });
 
   } 

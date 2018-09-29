@@ -1,4 +1,4 @@
-<main>
+<main class="open-sans">
     <div class="container">
     <div *ngFor="let race of currentRace" class="row row-eq-height full-race-row">
         <div class="col-md-3 race-status">
@@ -21,6 +21,7 @@
                     <div class="d-flex justify-content-center align-items-center no-child-margin mb-3">
                         <p *ngIf="race.totalSkill" class="mr-3 mb-0 press-start">Average Skill Rating: </p><span class="average-text audiowide">{{ race.totalSkill / race.numentrants | number:'1.0-0' }}</span>
                     </div>
+                    <p *ngIf="race.parsedFlags" class="current-race-flags">Flags: {{ race.parsedFlags }}</p>
                 </div><!-- end race data column-->
             </div> <!-- end row -->
         </div> <!-- end container-fluid -->
