@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { TimeService } from '../../services/time.service';
 import { RaceService } from '../../services/race.service';
 import { Subscription } from 'rxjs';
+import * as shape from 'd3-shape';
 
 @Component({
   selector: 'fes-player-stats',
@@ -44,18 +45,35 @@ export class PlayerStatsComponent implements OnInit, OnDestroy {
   public lineData;
   public viewLine: any[] = [700, '100%'];
 
-  // options
+  // line chart options
   public showXAxisLine = true;
   public showYAxisLine = true;
   public gradientLine = false;
   public showLegendLine = true;
   public showXAxisLabelLine = true;
-  public xAxisLabelLine = 'Country';
+  public xAxisLabelLine = 'Date of Race';
   public showYAxisLabelLine = true;
-  public yAxisLabelLine = 'Population';
-  // public curveLine() {}
+  public yAxisLabelLine = 'SRL Points';
+  public curveLine = shape.curveMonotoneX;
+  public activeEntriesLine = [];
 
   public colorSchemeLine = {
+    domain: ['#010059']
+  };
+
+  // bar chart options
+  // options
+  public barData;
+  showXAxisBar = true;
+  showYAxisBar = true;
+  gradientBar = true;
+  showLegendBar= false;
+  showXAxisLabelBar = true;
+  xAxisLabelBar = 'Date of Rave';
+  showYAxisLabelBar = true;
+  yAxisLabelBar = 'Z-Score';
+
+  colorSchemeBar = {
     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
   };
 
@@ -98,6 +116,7 @@ export class PlayerStatsComponent implements OnInit, OnDestroy {
       console.log('recents:', this.recents);
       this.prepareLineData(this.playerName);
       console.log('linedata:', this.lineData);
+      console.log('barData', this.barData);
     }));
   }
 
@@ -276,8 +295,9 @@ export class PlayerStatsComponent implements OnInit, OnDestroy {
       name: "SRL Points",
       series: []
     }];
+    this.barData = [];
     
-    this.recents.forEach(race => {
+    this.recents.forEach((race, index) => {
       let myVal = 0;
       let myLabel = '';
       race.results.forEach(result => {
@@ -291,7 +311,10 @@ export class PlayerStatsComponent implements OnInit, OnDestroy {
           if (race.goal.indexOf('JK2PC3T3S2BF2NE3X2Y2GZ') >= 0) dateString += ' (Ro16)';
           if (race.goal.indexOf('Community Race') >= 0) dateString += ' (Comm.)';
           if (race.goal.indexOf('HTTZ') >= 0) dateString += ' (LEAGUE)';
+          dateString = `${index + 1}: ${dateString}`;
           myLabel = dateString;
+          this.barData.unshift({name: myLabel, value: result.zScore});
+
         }
       });
       this.lineData[0].series.unshift({name: myLabel, value: myVal});
