@@ -22,6 +22,9 @@
                         <p *ngIf="race.totalSkill" class="mr-3 mb-0 press-start">Average Skill Rating: </p><span class="average-text audiowide">{{ race.totalSkill / race.numentrants | number:'1.0-0' }}</span>
                     </div>
                     <p *ngIf="race.parsedFlags" class="current-race-flags">Flags: {{ race.parsedFlags }}</p>
+                    <div class="d-flex flex-wrap" *ngIf="race.badges">
+                        <span *ngFor="let badge of race.badges" class="badge mr-3 mb-3" [ngClass]="{ 'badge-info': badge.class === 'info', 'badge-success': badge.class === 'success', 'badge-warning': badge.class === 'warning', 'badge-danger': badge.class === 'danger' }">{{ badge.text }}</span>
+                    </div>
                 </div><!-- end race data column-->
             </div> <!-- end row -->
         </div> <!-- end container-fluid -->
