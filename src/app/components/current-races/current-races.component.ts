@@ -46,8 +46,26 @@ export class CurrentRacesComponent implements OnInit {
       // flag badge parsing
       race['badges'] = [];
 
-      if ( flags.indexOf('V') !== -1 && flags.indexOf('V2') === -1) race.badges.push({class: 'info', text: 'Forge The Crystal'})
-      if ( flags.indexOf('V2') !== -1 ) race.badges.push({class: 'info', text: 'Giant%'})
+      if ( flags.indexOf('V') !== -1 && flags.indexOf('V2') === -1) race.badges.push({class: 'info', text: 'Forge The Crystal'});
+      if ( flags.indexOf('V2') !== -1 ) race.badges.push({class: 'info', text: 'Giant%'});
+      if ( flags.indexOf('J') === -1 ) race.badges.push({class: 'danger', text: 'No J-Items or Cmds'});
+      if ( flags.indexOf('J') !== -1 && flags.indexOf('J2') === -1) race.badges.push({class: 'warning', text: 'J-Items Only'});
+      if ( flags.indexOf('J2') !== -1 ) race.badges.push({class: 'success', text: 'J-Items & Cmds'});
+      if ( flags.indexOf('K2') !== -1 || flags.indexOf('K3') !== -1 || flags.indexOf('K4') !== -1 ) race.badges.push({class: 'warning', text: 'Key Items at Summon/Lunar Bosses'});
+      if ( flags.indexOf('K3') !== -1 || flags.indexOf('K4') !== -1 ) race.badges.push({class: 'danger', text: 'Key Items in Trapped Chests'});
+      if ( flags.indexOf('K4') !== -1 ) race.badges.push({class: 'danger', text: 'Possible Moon before Underground'});
+      if ( flags.indexOf('P') === -1 ) race.badges.push({class: 'success', text: 'Pass in a Shop'});
+      if ( flags.indexOf('P') !== -1 && flags.indexOf('P2') === -1) race.badges.push({class: 'warning', text: 'Pass is a Key Item'});
+      if ( flags.indexOf('P2') !== -1 ) race.badges.push({class: 'danger', text: 'Pass in 3 non-moon chests'});
+      if ( flags.indexOf('C3') !== -1 ) race.badges.push({class: 'danger', text: 'Only 5 character available'});
+      if ( flags.indexOf('W') === -1 ) race.badges.push({class: 'danger', text: 'WHY BURN?!'});
+      if ( flags.indexOf('W') !== -1 && flags.indexOf('W2') === -1) race.badges.push({class: 'success', text: 'Why Burn disabled'});
+      if ( flags.indexOf('W2') !== -1 ) race.badges.push({class: 'warning', text: 'Why Burn Replaced'});
+      if ( flags.indexOf('G') === -1 ) race.badges.push({class: 'danger', text: 'Major Glitches Allowed'})
+        else { race.badges.push({class: 'success', text: 'Major Glitches Disabled'})};
+      if ( flags.indexOf('N') === -1 ) race.badges.push({class: 'success', text: 'Free Lunch'});
+      if ( flags.indexOf('N') !== -1 ) race.badges.push({class: 'warning', text: 'Rydias Mom / Mist Dragon in play'}, {class: 'warning', text: 'No Free Lunch Recruitments'});
+      if ( flags.indexOf('N2') !== -1 ) race.badges.push({class: 'danger', text: 'No Free Bosses'});
 
         //   if (strpos($flags, 'V') !== false && strpos($flags, 'V2') === false){
         //     ?><span class="badge badge-info mr-3 mb-3">Forge The Crystal</span><?php
