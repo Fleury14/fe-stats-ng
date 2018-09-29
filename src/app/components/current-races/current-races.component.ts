@@ -66,6 +66,18 @@ export class CurrentRacesComponent implements OnInit {
       if ( flags.indexOf('N') === -1 ) race.badges.push({class: 'success', text: 'Free Lunch'});
       if ( flags.indexOf('N') !== -1 ) race.badges.push({class: 'warning', text: 'Rydias Mom / Mist Dragon in play'}, {class: 'warning', text: 'No Free Lunch Recruitments'});
       if ( flags.indexOf('N2') !== -1 ) race.badges.push({class: 'danger', text: 'No Free Bosses'});
+      if ( flags.indexOf('S') !== -1 && flags.indexOf('S2') === -1 && flags.indexOf('S3') === -1 && flags.indexOf('S4') === -1 && flags.indexOf('S5') === -1) race.badges.push({class: 'warning', text: 'Shops shuffled with bias'});
+      if ( flags.indexOf('S2') !== -1 ) race.badges.push({class: 'warning', text: 'Shops randomized with bias'});
+      if ( flags.indexOf('S3') !== -1 ) race.badges.push({class: 'warning', text: 'Shops randomized without location bias'});
+      if ( flags.indexOf('S4') !== -1 ) race.badges.push({class: 'success', text: 'Shops contain anything'});
+      if ( flags.indexOf('S5') !== -1 ) race.badges.push({class: 'danger', text: 'Cabinfest 2018'});
+      if ( flags.indexOf('T') !== -1 && flags.indexOf('T2') === -1 && flags.indexOf('T3') === -1 && flags.indexOf('T4') === -1 && flags.indexOf('T5') === -1) race.badges.push({class: 'warning', text: 'Chests shuffled with bias'});
+      if ( flags.indexOf('T2') !== -1 ) race.badges.push({class: 'warning', text: 'Chests randomized with bias'});
+      if ( flags.indexOf('T3') !== -1 ) race.badges.push({class: 'warning', text: 'Chests randomized without location bias'});
+      if ( flags.indexOf('T4') !== -1 ) race.badges.push({class: 'success', text: 'Chests contain anything'});
+      if ( flags.indexOf('T5') !== -1 ) race.badges.push({class: 'danger', text: 'Untrapped chests are all empty'});
+      if ( flags.indexOf('$3') !== -1 ) race.badges.push({class: 'success', text: 'Everything in shops are free'});
+
 
         //   if (strpos($flags, 'V') !== false && strpos($flags, 'V2') === false){
         //     ?><span class="badge badge-info mr-3 mb-3">Forge The Crystal</span><?php
