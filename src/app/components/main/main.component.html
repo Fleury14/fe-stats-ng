@@ -1,3 +1,51 @@
-<p>
-  main works!
-</p>
+<main>
+  <div class="jumbotron mb-0">
+    <h1 class="display-4 text-center">FF4 FE Race Stats</h1>
+  </div>
+</main>
+
+
+<!-- <div class="jumbotron mb-0">
+  <h1 class="display-4 text-center">FF4 FE Race Stats</h1>
+</div>
+<div class="current-races-banner d-flex justify-content-center align-items-center">
+  <a href="currentraces"><h2 class="text-center audiowide">There <? echo count($ff4races) !== 1 ? 'are' : 'is' ?> <?php echo count($ff4races); ?> race<? echo count($ff4races) !== 1 ? 's' : '' ?> currently being run.</h2></a>
+</div>
+<div class="container-fluid ticker-row mb-5">
+  <div class="row">
+    <div class="col-sm-1 d-sm-flex d-none justify-content-center align-items-center ticker-col"></div>
+    <?php for ($i = $recent_start; $i <= $recent_end; $i++): ?>
+      <div class="col-sm-2 recent-cell d-flex justify-content-center flex-column p-1">
+        <p class="mb-0"><u class="recent-cell-header"><?php echo date('n/d g:ia T ', $past_races->pastraces[$i]->date); ?></u></p>
+        <p class="mb-0"><strong class="gold-text">1st:</strong> <?php echo $past_races->pastraces[$i]->results[0]->player; ?></p>
+        <p class="mb-0"><strong class="silver-text">2nd:</strong> <?php echo $past_races->pastraces[$i]->results[1]->player; ?></p>
+        <p class="mb-0"><strong class="bronze-text">3rd:</strong> <?php echo $past_races->pastraces[$i]->results[2]->player; ?></p>
+      </div>
+    <?php endfor; ?>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8">
+      <?php if (have_posts()): while (have_posts()) : the_post() ?>
+      <article>
+        <a href="<?php the_permalink(); ?>"><h3> <?php the_title(); ?></h3></a>
+        <p class="sub-text text-uppercase">Created by <?php the_author(); ?> on <?php the_date(); ?></p>
+        <p> <?php the_content(); ?> </p>
+      </article>
+      
+      <?php endwhile;
+      endif; ?>
+    </div>
+    <div class="col-sm-4 featured">
+      <figure class="figure">
+        <div class="laptop-image"></div>
+        <h2 class="press-start text-uppercase">Links</h2>
+        <a target="_blank" href="http://ff4fe.com">FF4 Free Enterprise Site</a>
+        <a target="_blank" href="http://speedrunslive.com">SpeedRunsLive</a>
+        <a target="_blank" href="https://discord.gg/AVeUqkb">FF4: FE Discord</a>
+      </figure>
+      
+    </div>
+  </div>
+</div> -->
