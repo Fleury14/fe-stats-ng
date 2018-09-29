@@ -26,15 +26,18 @@ export class CurrentRacesComponent implements OnInit {
 
   public getRacers(race) {
     const racerList = [];
-    for (let key in race) {
+    let entrants = race.entrants;
+    console.log('entrants', entrants)
+    for (let key in entrants) {
+      
       const racer = {
-        name: race[key].displayName,
-        place: race[key].place,
-        time: race[key].time,
-        message: race[key].message,
-        statetext: race[key].statetext,
-        twitch: race[key].twitch,
-        trueskill: race[key].trueskill
+        name: entrants[key].displayname,
+        place: entrants[key].place,
+        time: entrants[key].time,
+        message: entrants[key].message,
+        statetext: entrants[key].statetext,
+        twitch: entrants[key].twitch,
+        trueskill: entrants[key].trueskill
       }
       racerList.push(racer);
     }
