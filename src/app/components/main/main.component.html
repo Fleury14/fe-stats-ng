@@ -2,6 +2,9 @@
   <div class="jumbotron mb-0">
     <h1 class="display-4 text-center">FF4 FE Race Stats</h1>
   </div>
+  <div class="current-races-banner d-flex justify-content-center align-items-center">
+    <a routerLink="/current-races"><h2 class="text-center audiowide">There <span>{{ numOfRaces === 1 && 'is' || 'are' }}</span> {{ numOfRaces }} race{{ numofRaces !== 1 && 's' || '' }} currently being run.</h2></a>
+  </div>
 </main>
 
 
