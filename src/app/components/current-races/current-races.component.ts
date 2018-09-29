@@ -16,7 +16,9 @@ export class CurrentRacesComponent implements OnInit {
   ngOnInit() {
     this._race.getCurrentRaces().subscribe(resp => {
       this.currentRace = this._filterFF4Races(resp['races']);
+      this._prepareRaceData(this.currentRace);
       console.log(this.currentRace);
+
     });
   }
 
@@ -24,12 +26,22 @@ export class CurrentRacesComponent implements OnInit {
     return races.filter(race => race.game.abbrev === 'ff4hacks');
   }
 
+  private _prepareRaceData(races: any[]) {
+    races.forEach(race => {
+      const entrants = race.entrants;
+      let totalSkill = 0;
+      for (let key in entrants) {
+        totalSkill += parseInt(entrants[key].trueskill);
+      }
+      race['totalSkill'] = totalSkill;
+    });
+
+  } 
+
   public getRacers(race) {
     const racerList = [];
     let entrants = race.entrants;
-    console.log('entrants', entrants)
     for (let key in entrants) {
-      
       const racer = {
         name: entrants[key].displayname,
         place: entrants[key].place,
