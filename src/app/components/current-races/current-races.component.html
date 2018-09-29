@@ -1,4 +1,4 @@
-<main>
+<main class="open-sans">
     <div class="container">
     <div *ngFor="let race of currentRace" class="row row-eq-height full-race-row">
         <div class="col-md-3 race-status">
@@ -9,14 +9,23 @@
         <h2 class="text-center audiowide">{{ race.numentrants }} participant<span *ngIf="race.numentrants && race.numentrants != 1">s</span></h2>
         <div class="container-fluid">
             <div class="row">
-            <div class="col-md-4 order-2">
-                <div class="racer-list">
-                <div class="racer-container" *ngFor="let racer of getRacers(race)">
-                    <span class="racer">{{ racer.name }}</span>
-                    <span class="badge badge-primary">{{ racer.trueskill }}</span>
-                </div>
-                </div>
-            </div>
+                <div class="col-md-4 order-2">
+                    <div class="racer-list">
+                        <div class="racer-container" *ngFor="let racer of getRacers(race)">
+                            <a routerLink="../player-stats/{{racer.name}}"><span class="racer">{{ racer.name }}</span></a>
+                            <span class="badge badge-primary">{{ racer.trueskill }}</span>
+                        </div>
+                    </div>
+                </div><!-- end player list column-->
+                <div class="col-md-8 order-1">
+                    <div class="d-flex justify-content-center align-items-center no-child-margin mb-3">
+                        <p *ngIf="race.totalSkill" class="mr-3 mb-0 press-start">Average Skill Rating: </p><span class="average-text audiowide">{{ race.totalSkill / race.numentrants | number:'1.0-0' }}</span>
+                    </div>
+                    <p *ngIf="race.parsedFlags" class="current-race-flags">Flags: {{ race.parsedFlags }}</p>
+                    <div class="d-flex flex-wrap" *ngIf="race.badges">
+                        <span *ngFor="let badge of race.badges" class="badge mr-3 mb-3" [ngClass]="{ 'badge-info': badge.class === 'info', 'badge-success': badge.class === 'success', 'badge-warning': badge.class === 'warning', 'badge-danger': badge.class === 'danger' }">{{ badge.text }}</span>
+                    </div>
+                </div><!-- end race data column-->
             </div> <!-- end row -->
         </div> <!-- end container-fluid -->
         </div> <!-- end race info - right side -->
