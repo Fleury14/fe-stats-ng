@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P|Audiowide|Open+Sans');
+// @import url('https://fonts.googleapis.com/css?family=Audiowide|Open+Sans');
+
+$sans: 'Open Sans', sans-serif;
+
+@font-face {
+  font-Family: 'ff4';
+  src: 'fonts/ffiv.tff';
+}
+
+// html {
+//   box-sizing: border-box;
+//   -webkit-font-smoothing: antialiased;
+//   -webkit-tap-highlight-color: transparent;
+//   text-rendering: optimizeLegibility;
+// }
+
+
+
+.hr {
+  height: 4px;
+  margin-left: 15px;
+  margin-bottom:-3px;
+  width: 100%;
+}
+.hr-warning{
+  background-image: -webkit-linear-gradient(left, rgba(210,105,30,.8), rgba(210,105,30,.6), rgba(0,0,0,0));
+}
+.hr-success{
+  background-image: -webkit-linear-gradient(left, rgba(15,157,88,.8), rgba(15, 157, 88,.6), rgba(0,0,0,0));
+}
+.hr-primary{
+  background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(66, 133, 244,.6), rgba(66,133,244,.8), rgba(66, 133, 244,.6), rgba(0,0,0,0));
+}
+.hr-danger{
+  background-image: -webkit-linear-gradient(left, rgba(244,67,54,.8), rgba(244,67,54,.6), rgba(0,0,0,0));
+}
+
+.current-races-banner {
+
+  background-color: #010059;
+  padding: 20px;
+
+  a {
+    color: #eee;
+    &:hover {
+      color: yellow;
+      text-decoration: none;
+    }
+  }
+}
+
+.ticker-row {
+  width: 100%;
+  background-color: #333;
+
+  .ticker-col {
+    color: #eee;
+    height: 150px;
+  }
+
+  .recent-cell {
+    color: #eee;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .recent-cell-header {
+   font-weight: 700;
+   font-size: 14px;
+   color: lighten(#010065, 70); 
+  }
+}
+
+.gold-text {
+  color: gold;
+}
+
+.silver-text {
+  color: silver;
+}
+
+.bronze-text {
+  color: burlywood;
+}
+
+.accordion-link {
+  color: #eee;
+  width: 100%;
+  text-align: left;
+}
+
+.link-button {
+  position: absolute;
+  right: 10px;
+  top: 0px;
+  padding: 5px 20px;
+  border-radius: 3px;
+  background-color: #3897f0;
+}
+
+html, body {
+  height: 100%;
+}
+
+
+a {
+    color: #3897f0;
+    text-decoration: none
+}
+
+a:hover {
+    text-decoration: underline
+}
+
+.no-child-margin {
+  p, h1, h2, h3, span {
+    margin: 0
+  }
+
+}
+
+section {
+  padding: 50px;
+}
+
+.fluidic-player {
+  height: 768px;
+  width: 1024px;
+}
+
+.featured {
+  background-color: #333;
+  height: 400px;
+  color: #eee;
+  padding: 20px;
+  margin-bottom: 50px;
+  
+  .laptop-image {
+    width: 100%;
+    height: 150px;
+    background-size: cover;
+    margin-bottom: 20px;
+    background-position: center;
+  }
+}
+
+
+
+// BASE INDEX STYLES
+
+.jumbotron {
+  margin-top: 0;
+  background: url('../../../assets/img/silvera.png');
+  color: #eee;
+  height: 500px;
+  background-size: cover;
+  background-position: bottom;
+  background-blend-mode: color-dodge;
+  background-color: #333;
+  background-position-y: -250px;
+
+  h1 {
+    margin-top: 175px;
+  }
+}
+
+article {
+  padding: 20px;
+}
+
+figure {
+  width: 100%;
+
+  a {
+    display: block;
+  }
+}
+
+.sub-text {
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.card-body a {
+  display: inherit;
+}
+
+.card-text {
+  height: 150px;
+  margin-bottom: 35px;
+}
+
+.aside-container {
+    display: flex;
+    height: 150px;
+    justify-content: center;
+    align-items: center;
+
+    .aside {
+        background-color: #010059;
+        color: #eee;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100px;
+        width: 200px;
+        transition: 0.4s all;
+        box-shadow: 5px 5px 5px lighten(#010059, 20);
+
+        &:hover {
+            background-color: lighten(#010059, 10);
+            color: yellow;
+            cursor: pointer;
+        }
+    }
+    a:hover {
+        text-decoration: none !important;
+    }
+}
+
+.news-row {
+    margin-top: 100px;
+    margin-bottom: 100px;
+
+    .news-container {
+        background-color: #333;
+        border: 20px ridge #010059;
+        color: #eee;
+        border-radius: 10px;
+        padding: 40px;
+    }
+}
+
+// END BASE INDEX STYLES
+
+/* BRGIN USER INFO STYLES */
+
+.twitch-button {
+  border-radius: 5px;
+  background-color: #bb33bb;
+  color: #eee;
+  transition: 0.2s all;
+
+  &:hover {
+    cursor: pointer;
+    background-color: darken(#bb33bb, 10);
+  }
+
+}
+
+.info-container {
+  width: 90%;
+  background-color: lighten(#010065, 70);
+  margin-left: 5%;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 10px 10px 10px lighten(#010065, 0);
+
+  .info-row {
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+/* END USER INFOP STYLE */

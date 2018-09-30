@@ -21,4 +21,8 @@ export class RaceService {
 		return time;
     }
 
+    public getRecents() {
+        return this._http.get('http://api.speedrunslive.com/pastraces?game=ff4hacks&season=0&page=1&pageSize=20');
+    }
+
 }
