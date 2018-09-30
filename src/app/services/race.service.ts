@@ -25,4 +25,12 @@ export class RaceService {
         return this._http.get('http://api.speedrunslive.com/pastraces?game=ff4hacks&season=0&page=1&pageSize=20');
     }
 
+    public getAllRaces() {
+        return this._http.get('http://api.speedrunslive.com/pastraces?game=ff4hacks&season=0&page=1&pageSize=5000');
+    }
+
+    public getStats() {
+        return this._http.get('http://api.speedrunslive.com/stat?game=ff4hacks&season=0');
+    }
+
 }
