@@ -191,6 +191,34 @@ figure {
   margin-bottom: 35px;
 }
 
+.aside-container {
+    display: flex;
+    height: 150px;
+    justify-content: center;
+    align-items: center;
+
+    .aside {
+        background-color: #010059;
+        color: #eee;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100px;
+        width: 200px;
+        transition: 0.4s all;
+        box-shadow: 5px 5px 5px lighten(#010059, 20);
+
+        &:hover {
+            background-color: lighten(#010059, 10);
+            color: yellow;
+            cursor: pointer;
+        }
+    }
+    a:hover {
+        text-decoration: none !important;
+    }
+}
+
 // END BASE INDEX STYLES
 
 /* BRGIN USER INFO STYLES */
@@ -205,6 +233,7 @@ figure {
     cursor: pointer;
     background-color: darken(#bb33bb, 10);
   }
+
 }
 
 .info-container {
