@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RaceService } from '../../services/race.service';
 
 @Component({
   selector: 'fes-fe-stats',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FeStatsComponent implements OnInit {
 
-  constructor() { }
+  public stats;
+
+  constructor(private _race: RaceService) { }
 
   ngOnInit() {
+    this._race.getStats().subscribe(resp => {
+      this.stats = resp;
+    })
   }
 
 }

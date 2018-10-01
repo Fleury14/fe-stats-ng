@@ -10,33 +10,33 @@
       <div class="col-sm-1 d-sm-flex d-none justify-content-center align-items-center ticker-col"></div>
       <div class="col-sm-2 recent-cell d-flex justify-content-center flex-column p-1">
         <p class="mb-0"><u class="recent-cell-header">{{ recents[recentStart].date * 1000 | date:'short' }}</u></p>
-        <p class="mb-0"><strong class="gold-text">1st:</strong> {{ recents[recentStart].results[0].player }}</p>
-        <p class="mb-0"><strong class="silver-text">2nd:</strong> {{ recents[recentStart].results[1].player }}</p>
-        <p class="mb-0"><strong class="bronze-text">3rd:</strong> {{ recents[recentStart].results[2].player }}</p>
+        <p class="mb-0" *ngIf="recents[recentStart + 0 ].results[0]"><strong class="gold-text">1st:</strong> {{ recents[recentStart].results[0].player }}</p>
+        <p class="mb-0" *ngIf="recents[recentStart + 0 ].results[1]"><strong class="silver-text">2nd:</strong> {{ recents[recentStart].results[1].player }}</p>
+        <p class="mb-0" *ngIf="recents[recentStart + 0 ].results[2]"><strong class="bronze-text">3rd:</strong> {{ recents[recentStart].results[2].player }}</p>
       </div>
       <div class="col-sm-2 recent-cell d-flex justify-content-center flex-column p-1">
         <p class="mb-0"><u class="recent-cell-header">{{ recents[recentStart + 1].date * 1000 | date:'short' }}</u></p>
-        <p class="mb-0"><strong class="gold-text">1st:</strong> {{ recents[recentStart + 1].results[0].player }}</p>
-        <p class="mb-0"><strong class="silver-text">2nd:</strong> {{ recents[recentStart + 1].results[1].player }}</p>
-        <p class="mb-0"><strong class="bronze-text">3rd:</strong> {{ recents[recentStart + 1].results[2].player }}</p>
+        <p class="mb-0" *ngIf="recents[recentStart + 1 ].results[0]"><strong class="gold-text">1st:</strong> {{ recents[recentStart + 1].results[0].player }}</p>
+        <p class="mb-0" *ngIf="recents[recentStart + 1 ].results[1]"><strong class="silver-text">2nd:</strong> {{ recents[recentStart + 1].results[1].player }}</p>
+        <p class="mb-0" *ngIf="recents[recentStart + 1 ].results[2]"><strong class="bronze-text">3rd:</strong> {{ recents[recentStart + 1].results[2].player }}</p>
       </div>
       <div class="col-sm-2 recent-cell d-flex justify-content-center flex-column p-1">
         <p class="mb-0"><u class="recent-cell-header">{{ recents[recentStart + 2].date * 1000 | date:'short' }}</u></p>
-        <p class="mb-0"><strong class="gold-text">1st:</strong> {{ recents[recentStart + 2].results[0].player }}</p>
-        <p class="mb-0"><strong class="silver-text">2nd:</strong> {{ recents[recentStart + 2].results[1].player }}</p>
-        <p class="mb-0"><strong class="bronze-text">3rd:</strong> {{ recents[recentStart + 2].results[2].player }}</p>
+        <p class="mb-0" *ngIf="recents[recentStart + 2 ].results[0]"><strong class="gold-text">1st:</strong> {{ recents[recentStart + 2].results[0].player }}</p>
+        <p class="mb-0" *ngIf="recents[recentStart + 2 ].results[1]"><strong class="silver-text">2nd:</strong> {{ recents[recentStart + 2].results[1].player }}</p>
+        <p class="mb-0" *ngIf="recents[recentStart + 2 ].results[2]"><strong class="bronze-text">3rd:</strong> {{ recents[recentStart + 2].results[2].player }}</p>
       </div>
       <div class="col-sm-2 recent-cell d-flex justify-content-center flex-column p-1">
         <p class="mb-0"><u class="recent-cell-header">{{ recents[recentStart + 3].date * 1000 | date:'short' }}</u></p>
-        <p class="mb-0"><strong class="gold-text">1st:</strong> {{ recents[recentStart + 3].results[0].player }}</p>
-        <p class="mb-0"><strong class="silver-text">2nd:</strong> {{ recents[recentStart + 3].results[1].player }}</p>
-        <p class="mb-0"><strong class="bronze-text">3rd:</strong> {{ recents[recentStart + 3].results[2].player }}</p>
+        <p class="mb-0" *ngIf="recents[recentStart + 3 ].results[0]"><strong class="gold-text">1st:</strong> {{ recents[recentStart + 3].results[0].player }}</p>
+        <p class="mb-0" *ngIf="recents[recentStart + 3 ].results[1]"><strong class="silver-text">2nd:</strong> {{ recents[recentStart + 3].results[1].player }}</p>
+        <p class="mb-0" *ngIf="recents[recentStart + 3 ].results[2]"><strong class="bronze-text">3rd:</strong> {{ recents[recentStart + 3].results[2].player }}</p>
       </div>
       <div class="col-sm-2 recent-cell d-flex justify-content-center flex-column p-1">
         <p class="mb-0"><u class="recent-cell-header">{{ recents[recentStart + 4].date * 1000 | date:'short' }}</u></p>
-        <p class="mb-0"><strong class="gold-text">1st:</strong> {{ recents[recentStart + 4].results[0].player }}</p>
-        <p class="mb-0"><strong class="silver-text">2nd:</strong> {{ recents[recentStart + 4].results[1].player }}</p>
-        <p class="mb-0"><strong class="bronze-text">3rd:</strong> {{ recents[recentStart + 4].results[2].player }}</p>
+        <p class="mb-0" *ngIf="recents[recentStart + 4 ].results[0]"><strong class="gold-text">1st:</strong> {{ recents[recentStart + 4].results[0].player }}</p>
+        <p class="mb-0" *ngIf="recents[recentStart + 4 ].results[1]"><strong class="silver-text">2nd:</strong> {{ recents[recentStart + 4].results[1].player }}</p>
+        <p class="mb-0" *ngIf="recents[recentStart + 4 ].results[2]"><strong class="bronze-text">3rd:</strong> {{ recents[recentStart + 4].results[2].player }}</p>
       </div>
     </div>
   </div>
