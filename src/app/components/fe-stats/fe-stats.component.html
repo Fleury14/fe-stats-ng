@@ -1,3 +1,14 @@
-<p>
-  fe-stats works!
-</p>
+<main class="open-sans">
+  <div *ngIf="stats" class="container">
+    <div class="row">
+      <div class="col-md-6 text-center">
+        <p class="opening-stats">Popularity on SRL: <span class="audiowide"># {{ stats.game.popularityrank }}</span></p>
+        <p class="opening-stats">Largest Race: <span class="audiowide">{{ stats.stats.largestRaceSize }}</span></p>
+      </div>
+      <div class="col-md-6 text-center">
+        <p class="opening-stats">Total # of races: <span class="audiowide">{{ stats.stats.totalRaces }}</span></p>
+        <p class="opening-stats">Total # of racers: <span class="audiowide">{{ stats.stats.totalPlayers }}</span></p>
+      </div>
+    </div>
+  </div>
+</main>
