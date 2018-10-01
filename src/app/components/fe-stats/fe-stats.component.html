@@ -11,4 +11,30 @@
       </div>
     </div>
   </div>
+  <h2 class="text-center mt-5">Fastest Winning times</h2>
+    <div *ngIf="allRaces" class="container">
+        <div class="row">
+            <div class="col-sm-3 mini-table">
+                <p class="mini-table-header text-center">League Qualifiers</p>
+                <div *ngFor="let num of numCount" class="mini-table-row d-flex justify-content-between">
+                    <p>{{ racetypes.qual[num].results[0].player }}</p>
+                    <p>{{ time.formatRaceTime(racetypes.qual[num].results[0].time) }}</p>
+                </div>
+            </div>
+            <div class="col-sm-3 mini-table">
+                <p class="mini-table-header text-center">League Ro.32</p>
+                <div *ngFor="let num of numCount" class="mini-table-row d-flex justify-content-between">
+                  <p>{{ racetypes.ro32[num].results[0].player }}</p>
+                  <p>{{ time.formatRaceTime(racetypes.ro32[num].results[0].time) }}</p>
+                </div>
+            </div>
+            <div class="col-sm-3 mini-table">
+                <p class="mini-table-header text-center">League Ro.16</p>
+                <div *ngFor="let num of numCount" class="mini-table-row d-flex justify-content-between">
+                  <p>{{ racetypes.ro16[num].results[0].player }}</p>
+                  <p>{{ time.formatRaceTime(racetypes.ro16[num].results[0].time) }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </main>
