@@ -14,4 +14,18 @@ footer {
     }
   }
   
+  .icon-row {
+    font-size: 24px;
+
+    a {
+      color: #eee;
+      transition: 0.4s all;
+
+      &:hover {
+        color: lighten(#010059, 60);
+      }
+    }
+  }
+
+
   /* END FOOTER STYLES */
