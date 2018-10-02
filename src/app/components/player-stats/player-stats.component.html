@@ -12,6 +12,8 @@
             <p>Date of first race:</p>
             <h2>{{ playerStats.stats.firstRaceDate * 1000 | date }}</h2>
             <a *ngIf="playerStats.player.api == 'twitch' && playerStats.player.channel" href='http://twitch.tv/{{playerStats.player.channel}}' target="_blank"><button class="twitch-button mt-3">Twitch Channel</button></a>
+            <br><button class="default-button mt-3" (click)="setDefault()">Set as default</button>
+            <br><button *ngIf="getDefault()" (click)="clearDefault()" class="clear-button mt-3">Remove as default</button>
           </div>
           <div class="col-md-6 text-center">
             <p>Total time played:</p>

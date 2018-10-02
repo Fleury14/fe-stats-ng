@@ -87,6 +87,9 @@ export class PlayerStatsComponent implements OnInit, OnDestroy {
     // get playername from params
     this._actRoute.paramMap.subscribe(route => {
       this.playerName = route.get('player');
+      if (!this.playerName) {
+        if (localStorage.getItem('default')) this.playerName = localStorage.getItem('default');
+      }
       // then grab stats for player
       if (this.playerName) {
         this._getStats(this.playerName);
@@ -100,6 +103,18 @@ export class PlayerStatsComponent implements OnInit, OnDestroy {
     this.subs.forEach(sub => {
       sub.unsubscribe();
     })
+  }
+
+  public setDefault() {
+    localStorage.setItem('default', this.playerName);
+  }
+
+  public clearDefault() {
+    localStorage.removeItem('default');
+  }
+
+  public getDefault() {
+    return localStorage.getItem('default');
   }
 
   private _getRecents(player: string) {
