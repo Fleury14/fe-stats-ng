@@ -1,6 +1,9 @@
 <main>
   <section class="open-sans">
-    <h1 class="text-center" *ngIf="!playerStats">There are no stats for this player. Bummer.</h1>
+    <div class="ohnohoney">
+        <h1 class="text-center" *ngIf="!playerStats">There are no stats for this player. Bummer.</h1>
+    </div>
+    
     <div *ngIf="playerStats" class="sub-banner">
       <h1 class="audiowide">{{ playerStats.player.name}}</h1>
       <p class="audiowide">Rank: #{{ playerStats.stats.rank }}</p>
