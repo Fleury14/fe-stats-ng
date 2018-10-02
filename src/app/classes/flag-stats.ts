@@ -1,5 +1,6 @@
 export class FlagStats {
     public flags = {
+        keyList: [ 'J', 'K', 'C', 'P', 'T', 'S', 'B', 'F', 'N', 'E', '$', 'X', 'Y', 'G', 'W', 'Z'],
         J: {
             0: 0,
             1: 0,
