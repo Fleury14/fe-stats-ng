@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RaceService } from '../../services/race.service';
+import { TimeService } from '../../services/time.service';
 
 @Component({
   selector: 'fes-current-races',
@@ -11,7 +12,7 @@ export class CurrentRacesComponent implements OnInit {
   currentRace: any[] = []; // TODO: consider creating a type for race, even if its awfully big
   // racerList: any[] = [];
 
-  constructor(private _race: RaceService) { }
+  constructor(private _race: RaceService, public time: TimeService) { }
 
   ngOnInit() {
     this._race.getCurrentRaces().subscribe(resp => {
@@ -42,6 +43,13 @@ export class CurrentRacesComponent implements OnInit {
       else if (flags.indexOf('JK2PCT3S2BF2NE3X2Y2GZ') !== -1) { flags += ' (League Ro.32)'; }
       else if (flags.indexOf('JK2PC3T3S2BF2NE3X2Y2GZ') !== -1) { flags += ' (League Ro.16'; }
       race['parsedFlags'] = flags;
+
+      // set clock
+      let timeElapsed = Math.floor(Date.now() / 1000) - parseInt(race.time);
+      race['timeElapsed'] = timeElapsed;
+      setInterval( () => {
+        race.timeElapsed++;
+      }, 1000)
       
       // flag badge parsing
       race['badges'] = [];
