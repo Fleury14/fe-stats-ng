@@ -1,4 +1,11 @@
 
+.ohnohoney {
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .banner {
     height: 260px;
     background: url('../../../assets/img/ff4-fe-title.jpg');
@@ -37,6 +44,30 @@
     &:hover {
       cursor: pointer;
       background-color: darken(#bb33bb, 10);
+    }
+  }
+
+  .default-button {
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #eee;
+    transition: 0.2s all;
+  
+    &:hover {
+      cursor: pointer;
+      background-color: darken(#007bff, 10);
+    }
+  }
+
+  .clear-button {
+    border-radius: 5px;
+    background-color: #dc3545;
+    color: #eee;
+    transition: 0.2s all;
+  
+    &:hover {
+      cursor: pointer;
+      background-color: darken(#dc3545, 10);
     }
   }
 

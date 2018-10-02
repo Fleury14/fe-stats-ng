@@ -1,8 +1,13 @@
 <footer>
   <div class="container-fluid">
     <div class="row h-100">
-      <div class="col-md-6 d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-6 d-flex flex-column justify-content-center align-items-center h-100">
         <p>Created by J.R. Ruggiero</p>
+        <div class="d-flex icon-row mt-2">
+            <a href="https://github.com/fleury14" target="_blank"><i class="fab fa-github mr-5"></i></a>
+            <a href="mailto:fleury14@comcast.net" target="_blank"><i class="fas fa-envelope"></i></a>
+        </div>
+        
       </div>
       <div class="col-md-6 d-flex flex-column align-items-center justify-content-center">
         <a *ngFor="let item of navList" routerLink="{{ item.url }}">{{ item.title }}</a>
