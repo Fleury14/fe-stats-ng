@@ -36,5 +36,70 @@
                 </div>
             </div>
         </div>
+        <div class="row mt-5">
+          <div class="col-xs-12 w-100">
+            <h2 class="text-center text-uppercase press-start">Flag Stats</h2>
+          </div>
+        </div>
+        <div class="row">
+          <table class="table table-dark table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th class="audiowide" scope="row">Flag</th>
+                    <th class="audiowide" scope="row">0</th>
+                    <th class="audiowide" scope="row">1</th>
+                    <th class="audiowide" scope="row">2</th>
+                    <th class="audiowide" scope="row">3</th>
+                    <th class="audiowide" scope="row">4</th>
+                    <th class="audiowide" scope="row">5</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let flag of raceFlags.flags.keyList">
+                    <th class="audiowide flag-stats-flag" data-toggle="tooltip" data-placement="top" data-delay="{'show': 5, 'hide': 5000}" title="{{ raceFlags.flags[flag].description }}">{{ flag }}</th>
+                    <td *ngIf="raceFlags.flags[flag]['0'] || raceFlags.flags[flag]['0'] === 0" class="press-start">{{ (raceFlags.flags[flag][0] / raceFlags.flags[flag]['count']) | percent:'1.1-1' }}</td>
+                    <td *ngIf="raceFlags.flags[flag]['1'] || raceFlags.flags[flag]['1'] === 0" class="press-start">{{ (raceFlags.flags[flag][1] / raceFlags.flags[flag]['count']) | percent:'1.1-1' }}</td>
+                    <td *ngIf="raceFlags.flags[flag]['2'] || raceFlags.flags[flag]['2'] === 0" class="press-start">{{ (raceFlags.flags[flag][2] / raceFlags.flags[flag]['count'])  | percent:'1.1-1' }}</td>
+                    <td *ngIf="raceFlags.flags[flag]['3'] || raceFlags.flags[flag]['3'] === 0" class="press-start">{{ (raceFlags.flags[flag][3] / raceFlags.flags[flag]['count']) | percent:'1.1-1' }}</td>
+                    <td *ngIf="raceFlags.flags[flag]['4'] || raceFlags.flags[flag]['4'] === 0" class="press-start">{{ (raceFlags.flags[flag][4] / raceFlags.flags[flag]['count']) | percent:'1.1-1' }}</td>
+                    <td *ngIf="raceFlags.flags[flag]['5'] || raceFlags.flags[flag]['0'] === 0" class="press-start">{{ (raceFlags.flags[flag][5] / raceFlags.flags[flag]['count']) | percent:'1.1-1' }}</td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+    </div>
+ 
+    
+    <h2 class="press-start text-uppercase text-center mt-5">Community Races</h2>
+    <p *ngIf="racetypes.community.length > 0" class="text-center">{{ racetypes.community.length }} Community Races on record</p>
+    <p class="press-start text-center text-uppercase">Recent race summary</p>
+    <div *ngIf="racetypes.community.length > 0" class="container community-container mb-5">
+        <div class="row">
+            <div class="col-md-12 community-header d-flex justify-content-center align-items-center p-2">
+                <p class="m-0">Goal: {{ racetypes.community[0].goal }}</p>
+            </div>
+        </div>
+        <table class="table-sm table-striped w-100">
+            <thead>
+                <tr>
+                    <th scope="col">Rank</th>
+                    <th scope="col">Racer</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Z-Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let result of racetypes.community[0].results; index as i">
+                    <th scope="row" class="press-start">{{ i + 1 }}</th>
+                    <td class="audiowide">
+                      {{ result.player }}
+                    </td>
+                    <td class="press-start">
+                        {{ result.time === -1 ? 'Forfeit' : time.formatRaceTime(result.time) }}
+                    </td>
+                    <td class="press-start" [ngClass]="{ 'positive-change': result.zScore < 0, 'negative-change': result.zScore > 0 }">{{ result.zScore | number:'1.0-3' }}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </main>
