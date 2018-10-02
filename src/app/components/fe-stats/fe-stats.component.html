@@ -73,13 +73,13 @@
     <h2 class="press-start text-uppercase text-center mt-5">Community Races</h2>
     <p *ngIf="racetypes.community.length > 0" class="text-center">{{ racetypes.community.length }} Community Races on record</p>
     <p class="press-start text-center text-uppercase">Recent race summary</p>
-    <div *ngIf="racetypes.community.length > 0" class="container community-container">
+    <div *ngIf="racetypes.community.length > 0" class="container community-container mb-5">
         <div class="row">
             <div class="col-md-12 community-header d-flex justify-content-center align-items-center p-2">
                 <p class="m-0">Goal: {{ racetypes.community[0].goal }}</p>
             </div>
         </div>
-        <table class="table-sm table-striped w-100 ">
+        <table class="table-sm table-striped w-100">
             <thead>
                 <tr>
                     <th scope="col">Rank</th>
