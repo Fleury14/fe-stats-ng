@@ -32,6 +32,7 @@ export class FeStatsComponent implements OnInit {
         if (race.goal.indexOf('JK2PCT3S2BF2NE3X2Y2GZ') !== -1) this.racetypes.ro32.push(race);
         if (race.goal.indexOf('JK2PC3T3S2BF2NE3X2Y2GZ') !== -1) this.racetypes.ro16.push(race);
         if (race.goal.indexOf('Community') !== -1) this.racetypes.community.push(race);
+        this._race.addZScore(race);
       });
       this.racetypes.qual.sort(this.winningTimeCmp);
       this.racetypes.ro32.sort(this.winningTimeCmp);
