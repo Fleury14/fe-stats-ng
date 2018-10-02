@@ -57,12 +57,12 @@
             <tbody>
                 <tr *ngFor="let flag of raceFlags.flags.keyList">
                     <th class="audiowide flag-stats-flag" data-toggle="tooltip" data-placement="top" data-delay="{'show': 5, 'hide': 5000}" title="{{ raceFlags.flags[flag].description }}">{{ flag }}</th>
-                    <td *ngIf="raceFlags.flags[flag][0] || raceFlags.flags[flag][0] === 0" class="press-start">{{ (raceFlags.flags[flag][0] / raceFlags.flags[flag]['count']) | percent:'1.1-1' }}</td>
-                    <td *ngIf="raceFlags.flags[flag][1] || raceFlags.flags[flag][1] === 0" class="press-start">{{ (raceFlags.flags[flag][1] / raceFlags.flags[flag]['count']) | percent:'1.1-1' }}</td>
-                    <td *ngIf="raceFlags.flags[flag][2] || raceFlags.flags[flag][2] === 0" class="press-start">{{ (raceFlags.flags[flag][2] / raceFlags.flags[flag]['count'])  | percent:'1.1-1' }}</td>
-                    <td *ngIf="raceFlags.flags[flag][3] || raceFlags.flags[flag][3] === 0" class="press-start">{{ (raceFlags.flags[flag][3] / raceFlags.flags[flag]['count']) | percent:'1.1-1' }}</td>
-                    <td *ngIf="raceFlags.flags[flag][4] || raceFlags.flags[flag][4] === 0" class="press-start">{{ (raceFlags.flags[flag][4] / raceFlags.flags[flag]['count']) | percent:'1.1-1' }}</td>
-                    <td *ngIf="raceFlags.flags[flag][5] || raceFlags.flags[flag][0] === 0" class="press-start">{{ (raceFlags.flags[flag][5] / raceFlags.flags[flag]['count']) | percent:'1.1-1' }}</td>
+                    <td *ngIf="raceFlags.flags[flag]['0'] || raceFlags.flags[flag]['0'] === 0" class="press-start">{{ (raceFlags.flags[flag][0] / raceFlags.flags[flag]['count']) | percent:'1.1-1' }}</td>
+                    <td *ngIf="raceFlags.flags[flag]['1'] || raceFlags.flags[flag]['1'] === 0" class="press-start">{{ (raceFlags.flags[flag][1] / raceFlags.flags[flag]['count']) | percent:'1.1-1' }}</td>
+                    <td *ngIf="raceFlags.flags[flag]['2'] || raceFlags.flags[flag]['2'] === 0" class="press-start">{{ (raceFlags.flags[flag][2] / raceFlags.flags[flag]['count'])  | percent:'1.1-1' }}</td>
+                    <td *ngIf="raceFlags.flags[flag]['3'] || raceFlags.flags[flag]['3'] === 0" class="press-start">{{ (raceFlags.flags[flag][3] / raceFlags.flags[flag]['count']) | percent:'1.1-1' }}</td>
+                    <td *ngIf="raceFlags.flags[flag]['4'] || raceFlags.flags[flag]['4'] === 0" class="press-start">{{ (raceFlags.flags[flag][4] / raceFlags.flags[flag]['count']) | percent:'1.1-1' }}</td>
+                    <td *ngIf="raceFlags.flags[flag]['5'] || raceFlags.flags[flag]['0'] === 0" class="press-start">{{ (raceFlags.flags[flag][5] / raceFlags.flags[flag]['count']) | percent:'1.1-1' }}</td>
                 </tr>
             </tbody>
           </table>

@@ -87,7 +87,6 @@ export class FlagStats {
             1: 0,
             2: 0,
             3: 0,
-            4: 0,
             count: 0,
             description: 'Money modifier. 0: No changes. 1: Chests with weak items contain GP instead. Chests with weak and moderate items now contain GP instead. 3: All items in shops are free.'
         },
