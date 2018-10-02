@@ -11,6 +11,7 @@ export class CurrentRacesComponent implements OnInit {
 
   currentRace: any[] = []; // TODO: consider creating a type for race, even if its awfully big
   // racerList: any[] = [];
+  objectKeys = Object.keys;
 
   constructor(private _race: RaceService, public time: TimeService) { }
 
@@ -87,96 +88,6 @@ export class CurrentRacesComponent implements OnInit {
       if ( flags.indexOf('$3') !== -1 ) race.badges.push({class: 'success', text: 'Everything in shops are free'});
 
 
-        //   if (strpos($flags, 'V') !== false && strpos($flags, 'V2') === false){
-        //     ?><span class="badge badge-info mr-3 mb-3">Forge The Crystal</span><?php
-        // }
-        // if (strpos($flags, 'V2') !== false) {
-        //     ?><span class="badge badge-info mr-3 mb-3">Giant%</span><?php
-        // }
-        // if (strpos($flags, 'J') === false){
-        //     ?><span class="badge badge-danger mr-3 mb-3">No J-Items or Cmds</span><?php
-        // }
-        // if (strpos($flags, 'J') !== false && strpos($flags, 'J2') === false) {
-        //     ?><span class="badge badge-warning mr-3 mb-3">J-Items Only</span><?php
-        // }
-        // if (strpos($flags, 'J2') !== false) {
-        //     ?><span class="badge badge-success mr-3 mb-3">J Items & Cmds</span><?php
-        // }
-        // if (strpos($flags, 'K2') !== false || strpos($flags, 'K3') !== false || strpos($flags, 'K4') !== false) {
-        //     ?><span class="badge badge-warning mr-3 mb-3">Key Items at Summon/Lunar Bosses</span><?php
-        // }
-        // if (strpos($flags, 'K3') !== false || strpos($flags, 'K4') !== false) {
-        //     ?><span class="badge badge-danger mr-3 mb-3">Key Items in Trapped Chests</span><?php
-        // }
-        // if (strpos($flags, 'K4') !== false) {
-        //     ?><span class="badge badge-danger mr-3 mb-3">Possible Moon before Underground</span><?php
-        // }
-        // if (strpos($flags, 'P') === false) {
-        //     ?><span class="badge badge-success mr-3 mb-3">Pass in a shop</span><?php
-        // }
-        // if (strpos($flags, 'P') !== false && strpos($flags, 'P2') === false) {
-        //     ?><span class="badge badge-warning mr-3 mb-3">Pass mixed with key items</span><?php
-        // }
-        // if (strpos($flags, 'P2') !== false) {
-        //     ?><span class="badge badge-danger mr-3 mb-3">Pass in 3 random non-moon chests</span><?php
-        // }
-        // if (strpos($flags, 'C3') !== false) {
-        //     ?><span class="badge badge-danger mr-3 mb-3">Only 5 characters available</span><?php
-        // }
-        // if (strpos($flags, 'W') === false) {
-        //     ?><span class="badge badge-danger mr-3 mb-3">WHY BURN?</span><?php
-        // }
-        // if (strpos($flags, 'W') !== false && strpos($flags, 'W2') === false) {
-        //     ?><span class="badge badge-success mr-3 mb-3">Whyburn disabled</span><?php
-        // }
-        // if (strpos($flags, 'W2') !== false) {
-        //     ?><span class="badge badge-danger mr-3 mb-3">Whyburn replaced</span><?php
-        // }
-        // if (strpos($flags, 'G') === false) {
-        //     ?><span class="badge badge-warning mr-3 mb-3">Major Glitches Allowed</span><?php
-        // } else {
-        //     ?><span class="badge badge-success mr-3 mb-3">Major Glitches Disabled</span><?php
-        // }
-        // if (strpos($flags, 'N') === false) {
-        //     ?><span class="badge badge-success mr-3 mb-3">Free Lunch</span><?php
-        // }
-        // if (strpos($flags, 'N') !== false) {
-        //     ?><span class="badge badge-warning mr-3 mb-3">Rydia's Mom / Mist Dragon in play</span><span class="badge badge-warning mr-3 mb-3">No Free Lunch Recruitments</span><?php
-        // }
-        // if (strpos($flags, 'N2') !== false) {
-        //     ?><span class="badge badge-danger mr-3 mb-3">No Free Bosses</span><?php
-        // }
-        // if (strpos($flags, 'S') !== false && strpos($flags, 'S2') === false && strpos($flags, 'S3') === false && strpos($flags, 'S4') === false && strpos($flags, 'S5') === false ) {
-        //     ?><span class="badge badge-warning mr-3 mb-3">Shop shuffled with bias</span><?php
-        // }
-        // if (strpos($flags, 'S2') !== false) {
-        //     ?><span class="badge badge-warning mr-3 mb-3">Shops randomized with bias</span><?php
-        // }
-        // if (strpos($flags, 'S3') !== false) {
-        //     ?><span class="badge badge-warning mr-3 mb-3">Shops randomized without location bias</span><?php
-        // }
-        // if (strpos($flags, 'S4') !== false) {
-        //     ?><span class="badge badge-success mr-3 mb-3">Shops contain anything</span><?php
-        // }
-        // if (strpos($flags, 'S5') !== false) {
-        //     ?><span class="badge badge-danger mr-3 mb-3">CabinFest 2018</span><?php
-        // }
-        // if (strpos($flags, 'T') !== false && strpos($flags, 'T2') === false && strpos($flags, 'T3') === false && strpos($flags, 'T4') === false && strpos($flags, 'T5') === false ) {
-        //     ?><span class="badge badge-warning mr-3 mb-3">Untrapped chests shuffled with bias</span><span class="badge badge-warning mr-3 mb-3">Trapped chests shuffles with Summons/Lunar Bosses</span><?php
-        // }
-        // if (strpos($flags, 'T2') !== false  ) {
-        //     ?><span class="badge badge-warning mr-3 mb-3">Untrapped chests randomized with bias</span><?php
-        // }
-        // if (strpos($flags, 'T3') !== false  ) {
-        //     ?><span class="badge badge-warning mr-3 mb-3">Untrapped chests randomized without location bias</span><?php
-        // }
-        // if (strpos($flags, 'T4') !== false  ) {
-        //     ?><span class="badge badge-success mr-3 mb-3">Untrapped chests contain anything</span><?php
-        // }
-        // if (strpos($flags, 'T5') !== false  ) {
-        //     ?><span class="badge badge-danger mr-3 mb-3">Untrapped chests empty</span><?php
-        // }
-
     });
 
   } 
@@ -197,6 +108,26 @@ export class CurrentRacesComponent implements OnInit {
       racerList.push(racer);
     }
     return racerList;
+  }
+
+  public toggleResults(e) {
+    e.target.nextSibling.classList.toggle('hide-results');
+  }
+
+  public getPlaceFinish(race, place) {
+    let name = null;
+    for (let entrant in race.entrants) {
+      if (race.entrants[entrant].place == place) name = race.entrants[entrant].displayname;
+    };
+    return name;
+  }
+
+  public getTimeFinish(race, place) {
+    let time = null;
+    for (let entrant in race.entrants) {
+      if (race.entrants[entrant].place == place) time = race.entrants[entrant].time;
+    };
+    return time;
   }
 
 }
