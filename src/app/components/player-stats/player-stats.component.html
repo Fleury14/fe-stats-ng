@@ -1,7 +1,7 @@
 <main>
   <section class="open-sans">
-    <div class="ohnohoney">
-        <h1 class="text-center" *ngIf="!playerStats">There are no stats for this player. Bummer.</h1>
+    <div *ngIf="!playerStats" class="ohnohoney">
+        <h1 class="text-center">There are no stats for this player. Bummer.</h1>
     </div>
     
     <div *ngIf="playerStats" class="sub-banner">
