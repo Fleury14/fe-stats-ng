@@ -1,7 +1,8 @@
 <main>
   <section class="open-sans">
-    <div class="ohnohoney">
-        <h1 class="text-center" *ngIf="!playerStats">There are no stats for this player. Bummer.</h1>
+    <div *ngIf="!playerStats" class="ohnohoney">
+        <h1 class="text-center">There are no stats for this player. Bummer.</h1>
+        <h3>If you haven't yet, try entering a name inside the search bar on top.</h3>
     </div>
     
     <div *ngIf="playerStats" class="sub-banner">

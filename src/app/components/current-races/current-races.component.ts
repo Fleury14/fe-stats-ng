@@ -19,7 +19,7 @@ export class CurrentRacesComponent implements OnInit {
     this._race.getCurrentRaces().subscribe(resp => {
       this.currentRace = this._filterFF4Races(resp['races']);
       this._prepareRaceData(this.currentRace);
-      console.log(this.currentRace);
+      // console.log(this.currentRace);
 
     });
   }

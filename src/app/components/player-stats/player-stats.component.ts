@@ -128,24 +128,24 @@ export class PlayerStatsComponent implements OnInit, OnDestroy {
         race.results.sort((a, b) => a.place - b.place);
       });
       this.recents = races;
-      console.log('recents:', this.recents);
+      // console.log('recents:', this.recents);
       this.prepareLineData(this.playerName);
-      console.log('linedata:', this.lineData);
-      console.log('barData', this.barData);
+      // console.log('linedata:', this.lineData);
+      // console.log('barData', this.barData);
     }));
   }
 
   private _getStats(player: string) {
     this.subs.push(this._playerSvc.getPlayerBaseStats(player).subscribe(resp => {
       this.playerStats = resp;
-      console.log('stats', this.playerStats);
+      // console.log('stats', this.playerStats);
     }));
   }
 
   private _getHistory(player: string) {
     this.subs.push(this._playerSvc.getRaceHistory(player).subscribe(resp => {
       this.playerHistory = resp;
-      console.log('history', this.playerHistory);
+      // console.log('history', this.playerHistory);
       this._parseHistory(this.playerHistory);
     }));
   }

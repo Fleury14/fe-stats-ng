@@ -20,7 +20,7 @@ export class NavComponent implements OnInit {
     this.navList = this.navItems.getItems();
   }
 
-  public playerStats(e:any) {
+  public playerStats() {
     this._router.navigate(['player-stats', this.searchText]);
   }
 
