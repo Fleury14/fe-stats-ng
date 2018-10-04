@@ -34,6 +34,13 @@ export class FeStatsComponent implements OnInit {
         if (race.goal.indexOf('JK2PCT3S2BF2NE3X2Y2GZ') !== -1) this.racetypes.ro32.push(race);
         if (race.goal.indexOf('JK2PC3T3S2BF2NE3X2Y2GZ') !== -1) this.racetypes.ro16.push(race);
         if (race.goal.indexOf('Community') !== -1) this.racetypes.community.push(race);
+        if (race.goal.indexOf('HTTZZ') !== -1 || race.goal.indexOf('League Match') !== -1 || (race.goal.indexOf('League') !== -1 && race.goal.indexOf('BYOB') === -1)) {
+          console.log('League match:', race);
+          if (race.date < 1532482670 ) this.racetypes.qual.push(race) // aacount for HTTZZ quals
+          else if (race.date < 1536708121 ) this.racetypes.ro32.push(race) // and ro.32 and play in
+          else this.racetypes.ro16.push(race);
+
+        };
         this._race.addZScore(race);
         this._parseRaceFlags(race);
       });
@@ -67,14 +74,14 @@ export class FeStatsComponent implements OnInit {
     let flags_pos = race.goal.indexOf('?flags=');
     let seed_pos = race.goal.indexOf('&amp;seed=');
     let goal_flags = null;
-    if (flags_pos !== -1 ) {
+    if (flags_pos != -1 ) {
         goal_flags = race.goal.slice( flags_pos + 7, seed_pos);
     }
-    
+  
     if (goal_flags) { 
-      if ( goal_flags.indexOf('J') > -1 && goal_flags.indexOf('J2') === -1 ) { this.raceFlags.flags['J'][1]++; this.raceFlags.flags['J']['count']++; }
-      if ( goal_flags.indexOf('J2') > -1 ) { this.raceFlags.flags['J'][2]++; this.raceFlags.flags['J']['count']++; }
-      if ( goal_flags.indexOf('J') === -1 ) { this.raceFlags.flags['J'][0]++; this.raceFlags.flags['J']['count']++; }
+      if ( goal_flags.indexOf('J') > -1 && goal_flags.indexOf('J2') === -1 ) { this.raceFlags.flags['J']['1']++; this.raceFlags.flags['J']['count']++; }
+      if ( goal_flags.indexOf('J2') > -1 ) { this.raceFlags.flags['J']['2']++; this.raceFlags.flags['J']['count']++; }
+      if ( goal_flags.indexOf('J') === -1 ) { this.raceFlags.flags['J']['0']++; this.raceFlags.flags['J']['count']++; }
       if ( goal_flags.indexOf('K') > -1 && goal_flags.indexOf('K2') === -1 && goal_flags.indexOf('K3') === -1 && goal_flags.indexOf('K4') === -1 ) { this.raceFlags.flags['K'][1]++; this.raceFlags.flags['K']['count']++; }
       if ( goal_flags.indexOf('K2') > -1 ) { this.raceFlags.flags['K'][2]++; this.raceFlags.flags['K']['count']++; }
       if ( goal_flags.indexOf('K3') > -1 ) { this.raceFlags.flags['K'][3]++; this.raceFlags.flags['K']['count']++; }
