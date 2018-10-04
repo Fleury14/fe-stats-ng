@@ -35,7 +35,6 @@ export class FeStatsComponent implements OnInit {
         if (race.goal.indexOf('JK2PC3T3S2BF2NE3X2Y2GZ') !== -1) this.racetypes.ro16.push(race);
         if (race.goal.indexOf('Community') !== -1) this.racetypes.community.push(race);
         if (race.goal.indexOf('HTTZZ') !== -1 || race.goal.indexOf('League Match') !== -1 || (race.goal.indexOf('League') !== -1 && race.goal.indexOf('BYOB') === -1)) {
-          console.log('League match:', race);
           if (race.date < 1532482670 ) this.racetypes.qual.push(race) // aacount for HTTZZ quals
           else if (race.date < 1536708121 ) this.racetypes.ro32.push(race) // and ro.32 and play in
           else this.racetypes.ro16.push(race);
@@ -47,7 +46,7 @@ export class FeStatsComponent implements OnInit {
       this.racetypes.qual.sort(this.winningTimeCmp);
       this.racetypes.ro32.sort(this.winningTimeCmp);
       this.racetypes.ro16.sort(this.winningTimeCmp);
-      console.log('flags:', this.raceFlags);
+      // console.log('flags:', this.raceFlags);
 
     });
   }
