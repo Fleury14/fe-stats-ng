@@ -87,8 +87,26 @@
             background-color: #aaa;
         }
     }
-
+    a {
+        color: #eee;
+    }
     
+}
+
+.win-loss-time-cell {
+    border: 1px solid #010059;
+    transition: 0.4s all;
+    p {
+        margin: 0;
+    }
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.win-loss-time-active {
+    background-color: #010059;
+    color: #eee;
 }
 
 .time-rows {

@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 
 export class TimeService {
 
-    public formatTotalTime(timeInSecs:number) {
+    public formatTotalTime(timeInSecs:number) { 
         let timeBuffer = timeInSecs;
         let daysPlayed = null;
         let hoursPlayed = null;
@@ -36,6 +36,7 @@ export class TimeService {
     }
 
     public formatRaceTime(timeInSecs:number):string {
+        if (timeInSecs === -1) return 'Forfeit';
         let hours = Math.floor(timeInSecs / 3600);
         let minutes = Math.floor(timeInSecs / 60 % 60);
         let seconds = Math.floor(timeInSecs % 60);

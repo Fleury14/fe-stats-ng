@@ -97,15 +97,32 @@
         </div>
         <!--- End # of races in x days section -->
         <!-- begin win-loss section -->
-        <h2 class="text-center mt-5">Win Loss record against other racers (Scrollable)</h2>
-
-        <div class="row win-loss-row">
+        <h2 class="text-center mt-5 mb-3">Win Loss record against other racers (Scrollable)</h2>
+        <div class="row win-loss-time-row mb-3">
           <div class="col-sm-12">
+            <h4 class="text-center press-start text-uppercase">Select Time Period</h4>
           </div>
-          <div *ngFor="let opponent of opponentWinLoss" class="col-sm-2 win-loss" [ngStyle]="{ 'background-color': 'rgb(0, 0, ' + (opponent.wins) / (opponent.wins + opponent.losses) * 200 + ')' }">
-            <p class="audiowide">{{ opponent.name }}<span class="ml-1 badge" [ngClass]="{ 'badge-success': getRating(playerStats.player.name) > getRating(opponent.name), 'badge-danger': getRating(playerStats.player.name) < getRating(opponent.name) }">{{ getRating(opponent.name) }}</span></p>
-            <p class="press-start">{{ opponent.wins }}-{{ opponent.losses }}</p>
+          <div class="col-sm-6 d-flex justify-content-center align-items-center win-loss-time-cell" [ngClass]="{ 'win-loss-time-active' : opponentView === 'allTime' }" (click)="changeOpponentView('allTime')">
+            <p>All Time</p>
           </div>
+          <div class="col-sm-6 d-flex justify-content-center align-items-center win-loss-time-cell" [ngClass]="{ 'win-loss-time-active' : opponentView === 'last30Days' }" (click)="changeOpponentView('last30Days')">
+            <p>Last 30 days</p>
+          </div>
+        </div>
+        <div class="row win-loss-row">
+          <ng-container *ngIf="opponentView === 'allTime'">
+            <div *ngFor="let opponent of opponentWinLoss" class="col-sm-2 win-loss" [ngStyle]="{ 'background-color': 'rgb(0, 0, ' + (opponent.wins) / (opponent.wins + opponent.losses) * 200 + ')' }">
+              <a [routerLink]="['/player-stats', opponent.name]"><p class="audiowide">{{ opponent.name }}<span class="ml-1 badge" [ngClass]="{ 'badge-success': getRating(playerStats.player.name) > getRating(opponent.name), 'badge-danger': getRating(playerStats.player.name) < getRating(opponent.name) }">{{ getRating(opponent.name) }}</span></p></a>
+              <p class="press-start">{{ opponent.wins }}-{{ opponent.losses }}</p>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="opponentView === 'last30Days'">
+            <div *ngFor="let opponent of opponentWinLoss" class="col-sm-2 win-loss" [ngStyle]="{ 'background-color': 'rgb(0, 0, ' + (opponent.wins) / (opponent.wins + opponent.losses) * 200 + ')' }">
+              <a [routerLink]="['/player-stats', opponent.name]"><p class="audiowide">{{ opponent.name }}<span class="ml-1 badge" [ngClass]="{ 'badge-success': getRating(playerStats.player.name) > getRating(opponent.name), 'badge-danger': getRating(playerStats.player.name) < getRating(opponent.name) }">{{ getRating(opponent.name) }}</span></p></a>
+              <p class="press-start">{{ opponent.last30Days.wins }}-{{ opponent.last30Days.losses }}</p>
+            </div>
+          </ng-container>
+          
         </div>
         <!-- End win-loss section -->
         <!--- Begin Flag type section -->
