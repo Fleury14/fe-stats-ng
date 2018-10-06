@@ -273,7 +273,7 @@ export class PlayerStatsComponent implements OnInit, OnDestroy {
 
   }
 
-  public changeOpponent(view: string) {
+  public changeOpponentView(view: string) {
     this.opponentView = view;
   }
 
