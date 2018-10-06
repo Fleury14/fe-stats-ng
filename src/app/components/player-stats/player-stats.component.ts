@@ -296,6 +296,7 @@ export class PlayerStatsComponent implements OnInit, OnDestroy {
   public getLast10Avg(races: any[]) {
     const NUMOFGAMESFORRECENT = 10
     // sort races by date
+    if (races.length === 0) return 0;
     races.sort((a, b) => {
       return parseInt(a.date) - parseInt(b.date);
     });
