@@ -289,14 +289,13 @@ export class PlayerStatsComponent implements OnInit, OnDestroy {
       });
       return myTimeA - myTimeB;
     });
-    if (!races[0] || !races[0].results) return 0
-    else return races[0].results.filter(result => result.player.toLowerCase() === this.playerName.toLowerCase())[0]['time'];
+    return races[0].results.filter(result => result.player.toLowerCase() === this.playerName.toLowerCase())[0]['time'];
   }
 
   public getLast10Avg(races: any[]) {
     const NUMOFGAMESFORRECENT = 10
     // sort races by date
-    if (races.length === 0) return 0;
+    if (races.length === 0) return -1;
     races.sort((a, b) => {
       return parseInt(a.date) - parseInt(b.date);
     });
