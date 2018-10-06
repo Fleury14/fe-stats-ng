@@ -289,7 +289,8 @@ export class PlayerStatsComponent implements OnInit, OnDestroy {
       });
       return myTimeA - myTimeB;
     });
-    return races[0].results.filter(result => result.player.toLowerCase() === this.playerName.toLowerCase())[0]['time'];
+    if (!races[0] || !races[0].results) return 0
+    else return races[0].results.filter(result => result.player.toLowerCase() === this.playerName.toLowerCase())[0]['time'];
   }
 
   public getLast10Avg(races: any[]) {
