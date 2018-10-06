@@ -97,11 +97,19 @@
         </div>
         <!--- End # of races in x days section -->
         <!-- begin win-loss section -->
-        <h2 class="text-center mt-5">Win Loss record against other racers (Scrollable)</h2>
-
-        <div class="row win-loss-row">
+        <h2 class="text-center mt-5 mb-3 press-start text-uppercase">Win Loss record against other racers (Scrollable)</h2>
+        <div class="row win-loss-time-row">
           <div class="col-sm-12">
+            <h4>Select Time Period</h4>
           </div>
+          <div class="col-sm-6 d-flex justify-content-center align-items-center win-loss-time-cell" [ngClass]="{ 'win-loss-time-active' : opponentView === 'allTime' }" (click)="changeOpponentView('allTime')">
+            <p>All Time</p>
+          </div>
+          <div class="col-sm-6 d-flex justify-content-center align-items-center win-loss-time-cell" [ngClass]="{ 'win-loss-time-active' : opponentView === 'last30Days' }" (click)="changeOpponentView('last30Ddays')">
+            <p>Last 30 days</p>
+          </div>
+        </div>
+        <div class="row win-loss-row">
           <div *ngFor="let opponent of opponentWinLoss" class="col-sm-2 win-loss" [ngStyle]="{ 'background-color': 'rgb(0, 0, ' + (opponent.wins) / (opponent.wins + opponent.losses) * 200 + ')' }">
             <p class="audiowide">{{ opponent.name }}<span class="ml-1 badge" [ngClass]="{ 'badge-success': getRating(playerStats.player.name) > getRating(opponent.name), 'badge-danger': getRating(playerStats.player.name) < getRating(opponent.name) }">{{ getRating(opponent.name) }}</span></p>
             <p class="press-start">{{ opponent.wins }}-{{ opponent.losses }}</p>

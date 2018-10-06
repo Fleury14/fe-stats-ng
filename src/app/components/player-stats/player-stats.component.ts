@@ -24,6 +24,7 @@ export class PlayerStatsComponent implements OnInit, OnDestroy {
   public past14Days:number;
   public past30Days:number;
   public opponentWinLoss: any[] = [];
+  public opponentView = 'allTime';
   public racetypes = {
     leagueQual: [],
     leagueRo32: [],
@@ -223,7 +224,7 @@ export class PlayerStatsComponent implements OnInit, OnDestroy {
       if((Date.now() - race.date * 1000) / 1000 < 1209600) this.past14Days++;
       if((Date.now() - race.date * 1000) / 1000 < 2592000) this.past30Days++;
       const myTime = this._race.findMyTime(race, this.playerName);
-      race.results.forEach(result => {
+      race.results.forEach((result, index) => {
         if ((result.player.toLowerCase() !== this.playerName.toLowerCase()) && (result.time !== -1 && myTime !== null ))  {
           // check if opponent exists
           if (this.opponentWinLoss.filter(record => {
@@ -232,17 +233,27 @@ export class PlayerStatsComponent implements OnInit, OnDestroy {
             this.opponentWinLoss.push({
               name: result.player,
               wins: 0,
-              losses: 0
+              losses: 0,
+              last30Days: {
+                wins: 0,
+                losses: 0,
+              }
             });
           }
           // increment approprate category
           if ((result.time > myTime || result.time === -1) && myTime !== null) {
 						this.opponentWinLoss.forEach(opponent => {
-              if(opponent.name.toLowerCase() == result.player.toLowerCase()) opponent.wins++;
+              if(opponent.name.toLowerCase() == result.player.toLowerCase()) {
+                if(Date.now() - ( parseInt(race.date) * 1000 ) < (1000 * 60 * 60 * 24 * 30)) opponent.last30Days.wins++;
+                opponent.wins++;
+              }
             })
 					} else {
 						this.opponentWinLoss.forEach(opponent => {
-              if(opponent.name.toLowerCase() == result.player.toLowerCase()) opponent.losses++;
+              if(opponent.name.toLowerCase() == result.player.toLowerCase()) {
+                if(Date.now() - ( parseInt(race.date) * 1000 ) < (1000 * 60 * 60 * 24 * 30)) opponent.last30Days.losses++;
+                opponent.losses++;
+              }
             })
 					}
         }
@@ -260,8 +271,10 @@ export class PlayerStatsComponent implements OnInit, OnDestroy {
     this.racetypes.avg.leagueRo16 = this.getLast10Avg(this.racetypes.leagueRo16);
     // console.log(this.opponentWinLoss);
 
-    
+  }
 
+  public changeOpponent(view: string) {
+    this.opponentView = view;
   }
 
   public findBestTime(races: any[]) {
