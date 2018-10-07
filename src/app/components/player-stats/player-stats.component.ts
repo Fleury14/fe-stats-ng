@@ -25,7 +25,7 @@ export class PlayerStatsComponent implements OnInit, OnDestroy {
   public past30Days:number;
   public opponentWinLoss: any[] = [];
   public opponentView = 'allTime';
-  public monthsOfTheYear = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Mov', 'Dec'];
+  public monthsOfTheYear = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   public years = [2017, 2018, 2019];
   public targetMonth = new Date(Date.now()).getMonth();
   public targetYear = new Date(Date.now()).getFullYear();
