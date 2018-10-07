@@ -237,14 +237,24 @@ export class PlayerStatsComponent implements OnInit, OnDestroy {
               last30Days: {
                 wins: 0,
                 losses: 0,
-              }
+              },
+              months: []
             });
+            for (let i = 0; i < 12; i++) {
+              this.opponentWinLoss[this.opponentWinLoss.length - 1].months.push({
+                wins: 0,
+                losses: 0
+              });
+            }
           }
           // increment approprate category
           if ((result.time > myTime || result.time === -1) && myTime !== null) {
 						this.opponentWinLoss.forEach(opponent => {
               if(opponent.name.toLowerCase() == result.player.toLowerCase()) {
                 if(Date.now() - ( parseInt(race.date) * 1000 ) < (1000 * 60 * 60 * 24 * 30)) opponent.last30Days.wins++;
+                let raceDateObj = new Date(race.date * 1000);
+                let month = raceDateObj.getMonth();
+                opponent.months[month].wins++;
                 opponent.wins++;
               }
             })
@@ -252,6 +262,9 @@ export class PlayerStatsComponent implements OnInit, OnDestroy {
 						this.opponentWinLoss.forEach(opponent => {
               if(opponent.name.toLowerCase() == result.player.toLowerCase()) {
                 if(Date.now() - ( parseInt(race.date) * 1000 ) < (1000 * 60 * 60 * 24 * 30)) opponent.last30Days.losses++;
+                let raceDateObj = new Date(race.date * 1000);
+                let month = raceDateObj.getMonth();
+                opponent.months[month].losses++;
                 opponent.losses++;
               }
             })
@@ -269,7 +282,7 @@ export class PlayerStatsComponent implements OnInit, OnDestroy {
     this.racetypes.avg.leagueQual = this.getLast10Avg(this.racetypes.leagueQual);
     this.racetypes.avg.leagueRo32 = this.getLast10Avg(this.racetypes.leagueRo32);
     this.racetypes.avg.leagueRo16 = this.getLast10Avg(this.racetypes.leagueRo16);
-    // console.log(this.opponentWinLoss);
+    console.log(this.opponentWinLoss);
 
   }
 
