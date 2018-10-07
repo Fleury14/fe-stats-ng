@@ -25,6 +25,10 @@ export class PlayerStatsComponent implements OnInit, OnDestroy {
   public past30Days:number;
   public opponentWinLoss: any[] = [];
   public opponentView = 'allTime';
+  public monthsOfTheYear = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Mov', 'Dec'];
+  public years = [2017, 2018, 2019];
+  public targetMonth = new Date(Date.now()).getMonth();
+  public targetYear = new Date(Date.now()).getFullYear();
   public racetypes = {
     leagueQual: [],
     leagueRo32: [],
@@ -238,10 +242,20 @@ export class PlayerStatsComponent implements OnInit, OnDestroy {
                 wins: 0,
                 losses: 0,
               },
-              months: []
+              2019: {months: []},
+              2018: {months: []},
+              2017: {months: []}
             });
             for (let i = 0; i < 12; i++) {
-              this.opponentWinLoss[this.opponentWinLoss.length - 1].months.push({
+              this.opponentWinLoss[this.opponentWinLoss.length - 1][2019].months.push({
+                wins: 0,
+                losses: 0
+              });
+              this.opponentWinLoss[this.opponentWinLoss.length - 1][2018].months.push({
+                wins: 0,
+                losses: 0
+              });
+              this.opponentWinLoss[this.opponentWinLoss.length - 1][2017].months.push({
                 wins: 0,
                 losses: 0
               });
@@ -253,8 +267,9 @@ export class PlayerStatsComponent implements OnInit, OnDestroy {
               if(opponent.name.toLowerCase() == result.player.toLowerCase()) {
                 if(Date.now() - ( parseInt(race.date) * 1000 ) < (1000 * 60 * 60 * 24 * 30)) opponent.last30Days.wins++;
                 let raceDateObj = new Date(race.date * 1000);
+                let year = raceDateObj.getFullYear();
                 let month = raceDateObj.getMonth();
-                opponent.months[month].wins++;
+                opponent[year].months[month].wins++;
                 opponent.wins++;
               }
             })
@@ -263,8 +278,9 @@ export class PlayerStatsComponent implements OnInit, OnDestroy {
               if(opponent.name.toLowerCase() == result.player.toLowerCase()) {
                 if(Date.now() - ( parseInt(race.date) * 1000 ) < (1000 * 60 * 60 * 24 * 30)) opponent.last30Days.losses++;
                 let raceDateObj = new Date(race.date * 1000);
+                let year = raceDateObj.getFullYear();
                 let month = raceDateObj.getMonth();
-                opponent.months[month].losses++;
+                opponent[year].months[month].losses++;
                 opponent.losses++;
               }
             })
@@ -288,6 +304,14 @@ export class PlayerStatsComponent implements OnInit, OnDestroy {
 
   public changeOpponentView(view: string) {
     this.opponentView = view;
+  }
+
+  public changeTargetMonth(month: number) {
+    this.targetMonth = month;
+  }
+
+  public changeTargetYear(year: number) {
+    this.targetYear = year;
   }
 
   public findBestTime(races: any[]) {

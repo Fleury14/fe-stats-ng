@@ -98,17 +98,31 @@
         <!--- End # of races in x days section -->
         <!-- begin win-loss section -->
         <h2 class="text-center mt-5 mb-3">Win Loss record against other racers (Scrollable)</h2>
-        <div class="row win-loss-time-row mb-3">
+        <div class="row win-loss-time-row mb-0">
           <div class="col-sm-12">
             <h4 class="text-center press-start text-uppercase">Select Time Period</h4>
           </div>
-          <div class="col-sm-6 d-flex justify-content-center align-items-center win-loss-time-cell" [ngClass]="{ 'win-loss-time-active' : opponentView === 'allTime' }" (click)="changeOpponentView('allTime')">
+          <div class="col-sm-4 d-flex justify-content-center align-items-center win-loss-time-cell" [ngClass]="{ 'win-loss-time-active' : opponentView === 'allTime' }" (click)="changeOpponentView('allTime')">
             <p>All Time</p>
           </div>
-          <div class="col-sm-6 d-flex justify-content-center align-items-center win-loss-time-cell" [ngClass]="{ 'win-loss-time-active' : opponentView === 'last30Days' }" (click)="changeOpponentView('last30Days')">
+          <div class="col-sm-4 d-flex justify-content-center align-items-center win-loss-time-cell" [ngClass]="{ 'win-loss-time-active' : opponentView === 'last30Days' }" (click)="changeOpponentView('last30Days')">
             <p>Last 30 days</p>
           </div>
+          <div class="col-sm-4 d-flex justify-content-center align-items-center win-loss-time-cell" [ngClass]="{ 'win-loss-time-active' : opponentView === 'specificMonth' }" (click)="changeOpponentView('specificMonth')">
+              <p>Specific Month</p>
+            </div>
         </div>
+        <div class="row mb-0" [ngClass]="{'invisible': opponentView !== 'specificMonth'}">
+          <div class="col-sm-1 d-flex justify-content-center align-items-centrer win-loss-time-cell" *ngFor="let month of monthsOfTheYear; index as i" [ngClass]="{ 'win-loss-time-active': i === targetMonth }" (click)="changeTargetMonth(i)">
+            <p class="mb-0 mt-0">{{ month }}</p>
+          </div>
+        </div>
+        <div class="row mb-3" [ngClass]="{'invisible': opponentView !== 'specificMonth'}">
+          <div class="col-sm-4 d-flex justify-content-center align-items-center win-loss-time-cell" *ngFor="let year of years" [ngClass]="{ 'win-loss-time-active': year === targetYear }" (click)="changeTargetYear(year)">
+            <p class="mb-0 mt-0">{{ year }}</p>
+          </div>
+        </div>
+        
         <div class="row win-loss-row">
           <ng-container *ngIf="opponentView === 'allTime'">
             <div *ngFor="let opponent of opponentWinLoss" class="col-sm-2 win-loss" [ngStyle]="{ 'background-color': 'rgb(0, 0, ' + (opponent.wins) / (opponent.wins + opponent.losses) * 200 + ')' }">
