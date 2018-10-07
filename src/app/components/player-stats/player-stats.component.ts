@@ -298,7 +298,7 @@ export class PlayerStatsComponent implements OnInit, OnDestroy {
     this.racetypes.avg.leagueQual = this.getLast10Avg(this.racetypes.leagueQual);
     this.racetypes.avg.leagueRo32 = this.getLast10Avg(this.racetypes.leagueRo32);
     this.racetypes.avg.leagueRo16 = this.getLast10Avg(this.racetypes.leagueRo16);
-    console.log(this.opponentWinLoss);
+    // console.log(this.opponentWinLoss);
 
   }
 
