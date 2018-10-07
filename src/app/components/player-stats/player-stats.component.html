@@ -132,7 +132,7 @@
           </ng-container>
           <ng-container *ngIf="opponentView === 'last30Days'">
             <ng-container *ngFor="let opponent of opponentWinLoss">
-              <div *ngIf="opponent.last30Days.wins + opponent.last30Days.losses > 0" class="col-sm-2 win-loss" [ngStyle]="{ 'background-color': 'rgb(0, 0, ' + (opponent.last30Days.wins) / (opponent.wins + opponent.losses) * 200 + ')' }">
+              <div *ngIf="opponent.last30Days.wins + opponent.last30Days.losses > 0" class="col-sm-2 win-loss" [ngStyle]="{ 'background-color': 'rgb(0, 0, ' + (opponent.last30Days.wins) / (opponent.last30Days.wins + opponent.last30Days.losses) * 200 + ')' }">
                 <a [routerLink]="['/player-stats', opponent.name]"><p class="audiowide">{{ opponent.name }}<span class="ml-1 badge" [ngClass]="{ 'badge-success': getRating(playerStats.player.name) > getRating(opponent.name), 'badge-danger': getRating(playerStats.player.name) < getRating(opponent.name) }">{{ getRating(opponent.name) }}</span></p></a>
                 <p class="press-start">{{ opponent.last30Days.wins }}-{{ opponent.last30Days.losses }}</p>
               </div>
@@ -140,9 +140,9 @@
           </ng-container>
           <ng-container *ngIf="opponentView === 'specificMonth'">
               <ng-container *ngFor="let opponent of opponentWinLoss">
-                <div *ngIf="opponent[targetYear].months[targetMonth].wins + opponent[targetYear].months[targetMonth].losses > 0" class="col-sm-2 win-loss" [ngStyle]="{ 'background-color': 'rgb(0, 0, ' + (opponent.last30Days.wins) / (opponent.wins + opponent.losses) * 200 + ')' }">
+                <div *ngIf="opponent[targetYear].months[targetMonth].wins + opponent[targetYear].months[targetMonth].losses > 0" class="col-sm-2 win-loss" [ngStyle]="{ 'background-color': 'rgb(0, 0, ' + (opponent[targetYear].months[targetMonth].wins) / (opponent[targetYear].months[targetMonth].wins + opponent[targetYear].months[targetMonth].losses) * 200 + ')' }">
                   <a [routerLink]="['/player-stats', opponent.name]"><p class="audiowide">{{ opponent.name }}<span class="ml-1 badge" [ngClass]="{ 'badge-success': getRating(playerStats.player.name) > getRating(opponent.name), 'badge-danger': getRating(playerStats.player.name) < getRating(opponent.name) }">{{ getRating(opponent.name) }}</span></p></a>
-                  <p class="press-start">{{ opponent[targetYear].months[targetMonth].wins }}-{{ opponent[targetYear].months[targetMonth].wins }}</p>
+                  <p class="press-start">{{ opponent[targetYear].months[targetMonth].wins }}-{{ opponent[targetYear].months[targetMonth].losses }}</p>
                 </div>
               </ng-container>  
             </ng-container>
