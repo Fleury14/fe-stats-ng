@@ -172,7 +172,7 @@ export class FeStatsComponent implements OnInit {
         }
       })
     });
-    console.log('zscore', field, this.zScoreLeaders[field]);
+    // console.log('zscore', field, this.zScoreLeaders[field]);
   }
 
   private _sortZScoreArray(arr) {

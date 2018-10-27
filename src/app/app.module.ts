@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
+import { ZScoreLeaderboard } from './components/fe-stats/zScore-leaderboard/zScore-leaderboard';
 
 import { AppRoutingModule, routingComponents } from './app.routing.module';
 
@@ -21,7 +22,8 @@ import { TimeService } from './services/time.service';
     AppComponent,
     NavComponent,
     routingComponents,
-    FooterComponent
+    FooterComponent,
+    ZScoreLeaderboard
   ],
   imports: [
     BrowserModule, BrowserAnimationsModule, AppRoutingModule, HttpClientModule, NgbModule, FormsModule, NgxChartsModule
