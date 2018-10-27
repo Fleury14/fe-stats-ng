@@ -35,10 +35,10 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let result of data[selected]; index as i">
-                        <td>{{ i + 1 }}</td>
-                        <td>{{ result.name }}</td>
-                        <td>{{ result.date * 1000 | date:'medium' }}</td>
-                        <td>{{ result.zScore | number:'1.0-3' }}</td>
+                        <td class="press-start">{{ i + 1 }}</td>
+                        <td class="audiowide">{{ result.name }}</td>
+                        <td class="audiowide">{{ result.date * 1000 | date:'medium' }}</td>
+                        <td class="press-start">{{ result.zScore | number:'1.0-3' }}</td>
                     </tr>
                 </tbody>
             </table>
