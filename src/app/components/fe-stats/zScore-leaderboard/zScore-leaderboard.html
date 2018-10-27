@@ -1,0 +1,52 @@
+<div *ngIf="data.allTime.length === 0">
+    <h1 class="text-center">Loading Z-Score table...</h1>
+</div>
+<div *ngIf="data.allTime.length !== 0">
+    <h1 class="text-center press-start">Z-SCORE LEADERBOARD</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col sm-12 board-header">
+                <p class="text-center">Minimum 10 racers per race to qualify</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 board-cell" [ngClass]="{ 'board-active': selected === 'lastWeek' }" (click)="switchActive('lastWeek')">
+                <p class="text-center">
+                    Last 7 days
+                </p>
+            </div>
+            <div class="col-sm-4 board-cell" [ngClass]="{ 'board-active': selected === 'lastMonth' }" (click)="switchActive('lastMonth')">
+                <p class="text-center">
+                    Last 30 days
+                </p>
+            </div>
+            <div class="col-sm-4 board-cell" [ngClass]="{ 'board-active': selected === 'allTime' }" (click)="switchActive('allTime')">
+                <p class="text-center">
+                    All Time
+                </p>
+            </div>
+        </div>
+        <div class="row table-row">
+            <div class="col-sm-12">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Rank</th>
+                            <th scope="col">Racer</th>
+                            <th scope="col">Date Recorded</th>
+                            <th scope="col">Z-Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let result of data[selected]; index as i">
+                            <td class="press-start">{{ i + 1 }}</td>
+                            <td class="audiowide">{{ result.name }}</td>
+                            <td class="audiowide">{{ result.date * 1000 | date:'medium' }}</td>
+                            <td class="press-start">{{ result.zScore | number:'1.0-3' }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
