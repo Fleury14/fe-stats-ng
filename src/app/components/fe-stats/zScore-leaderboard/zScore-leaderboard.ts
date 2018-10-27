@@ -7,10 +7,12 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 
 export class ZScoreLeaderboard implements OnInit {
+    selected: string = 'lastWeek';
     @Input() data: any[];
 
     ngOnInit() {
         console.log('data recieved', this.data);
+        console.log(this.data[this.selected]);
     }
     
 }

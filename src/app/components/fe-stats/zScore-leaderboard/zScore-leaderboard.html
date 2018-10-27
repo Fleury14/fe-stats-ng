@@ -22,4 +22,26 @@
             </p>
         </div>
     </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Rank</th>
+                        <th scope="col">Racer</th>
+                        <th scope="col">Date Recorded</th>
+                        <th scope="col">Z-Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let result of data[selected]; index as i">
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ result.name }}</td>
+                        <td>{{ result.date }}</td>
+                        <td>{{ result.zScore }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
