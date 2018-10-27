@@ -1,0 +1,29 @@
+.table-row {
+    border: 1px solid #001059;
+}
+
+.board-header {
+    background-color: #001059;
+    color: #eee;
+    padding: 5px;
+    p {
+        margin: 0;
+    }
+}
+
+.board-cell {
+    border: 1px solid #001059;
+
+    p {
+        margin: 0;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.board-active {
+    background-color: #001059;
+    color: #eee;
+}

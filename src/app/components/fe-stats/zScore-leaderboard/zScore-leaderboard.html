@@ -6,23 +6,23 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-4 board-cell" [ngClass]="{ 'board-active': selected === 'lastWeek' }" (click)="switchActive('lastWeek')">
             <p class="text-center">
                 Last 7 days
             </p>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-4 board-cell" [ngClass]="{ 'board-active': selected === 'lastMonth' }" (click)="switchActive('lastMonth')">
             <p class="text-center">
                 Last 30 days
             </p>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-4 board-cell" [ngClass]="{ 'board-active': selected === 'allTime' }" (click)="switchActive('allTime')">
             <p class="text-center">
                 All Time
             </p>
         </div>
     </div>
-    <div class="row">
+    <div class="row table-row">
         <div class="col-sm-12">
             <table class="table table-striped">
                 <thead>
@@ -37,8 +37,8 @@
                     <tr *ngFor="let result of data[selected]; index as i">
                         <td>{{ i + 1 }}</td>
                         <td>{{ result.name }}</td>
-                        <td>{{ result.date }}</td>
-                        <td>{{ result.zScore }}</td>
+                        <td>{{ result.date * 1000 | date:'medium' }}</td>
+                        <td>{{ result.zScore | number:'1.0-3' }}</td>
                     </tr>
                 </tbody>
             </table>

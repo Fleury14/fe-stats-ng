@@ -15,4 +15,7 @@ export class ZScoreLeaderboard implements OnInit {
         console.log(this.data[this.selected]);
     }
     
+    public switchActive(flag: string) {
+        this.selected = flag;
+    }
 }
