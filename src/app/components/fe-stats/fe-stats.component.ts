@@ -16,8 +16,18 @@ export class FeStatsComponent implements OnInit {
     qual: [],
     ro32: [],
     ro16: [],
-    community: []
+    community: [],
+    zScoreHigh: {
+      lastWeek: [],
+      lastMonth: [],
+      allTime: []
+    }
   };
+  public zScoreLeaders = {
+    lastWeek: [],
+    lastMonth: [],
+    allTime: [],
+  }
   public numCount = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
   public raceFlags = new FlagStats();
 
@@ -42,7 +52,17 @@ export class FeStatsComponent implements OnInit {
         };
         this._race.addZScore(race);
         this._parseRaceFlags(race);
+        // to change the number of entrants needed to qualify for z-score board, change the below number
+        if (race.numentrants >= 10) {
+          if((Date.now() - race.date * 1000) / 1000 < 604800) this.racetypes.zScoreHigh.lastWeek.push(race);
+          if((Date.now() - race.date * 1000) / 1000 < 2592000) this.racetypes.zScoreHigh.lastMonth.push(race);
+          this.racetypes.zScoreHigh.allTime.push(race);
+        }
+        
       });
+      this._parseZScoreLeaderboard('lastWeek');
+      this._parseZScoreLeaderboard('lastMonth');
+      this._parseZScoreLeaderboard('allTime');
       this.racetypes.qual.sort(this.winningTimeCmp);
       this.racetypes.ro32.sort(this.winningTimeCmp);
       this.racetypes.ro16.sort(this.winningTimeCmp);
@@ -135,6 +155,28 @@ export class FeStatsComponent implements OnInit {
       if ( goal_flags.indexOf('Z') > -1 && goal_flags.indexOf('Z2') === -1 ) { this.raceFlags.flags['Z'][1]++; this.raceFlags.flags['Z']['count']++; }
       if ( goal_flags.indexOf('Z') === -1 ) { this.raceFlags.flags['Z'][0]++; this.raceFlags.flags['Z']['count']++; }    
     }
+  }
+
+  private _parseZScoreLeaderboard(field) {
+    this.racetypes.zScoreHigh[field].forEach(race => {
+      race.results.forEach(result => {
+        if (this.zScoreLeaders[field].length < 25) {
+          this.zScoreLeaders[field].push({ name: result.player, zScore: result.zScore, date: race.date });
+          this._sortZScoreArray(this.zScoreLeaders[field]);
+        } else {
+          if(this.zScoreLeaders[field][this.zScoreLeaders.lastWeek.length - 1].zScore > result.zScore) {
+            this.zScoreLeaders[field].pop();
+            this.zScoreLeaders[field].push({ name: result.player, zScore: result.zScore, date: race.date });
+            this._sortZScoreArray(this.zScoreLeaders[field]);
+          }
+        }
+      })
+    });
+    console.log('zscore', field, this.zScoreLeaders[field]);
+  }
+
+  private _sortZScoreArray(arr) {
+    arr.sort( (a, b) => a.zScore - b.zScore);
   }
 
 }
