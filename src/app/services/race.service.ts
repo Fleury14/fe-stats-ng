@@ -41,7 +41,7 @@ export class RaceService {
         const forfeitPenalty = 60 * 5;
         // put all times into one array
         race.results.forEach(result => {
-            if (result.time === -1) {
+            if (result.time === -1 || result.time === -2) {
                 raceTimes.unshift(raceLongTime + forfeitPenalty);
             } else {
                 raceTimes.unshift(result.time);
@@ -55,7 +55,7 @@ export class RaceService {
         const sqrdDiff = [];
         // populate array of squared differences
         raceTimes.forEach(time => {
-            if (time === -1) time = raceLongTime + forfeitPenalty;
+            if (time === -1 || time === -2) time = raceLongTime + forfeitPenalty;
             sqrdDiff.unshift(Math.pow(time - standaredMean, 2));
         });
         
@@ -67,7 +67,7 @@ export class RaceService {
 
         // assign each calculated z-score to the respective result
         race.results.forEach(result => {
-            result['zScore'] = ((result.time === -1 ? raceLongTime + forfeitPenalty : result.time) - race.stdMean) / race.stdDev;
+            result['zScore'] = ((result.time === -1 || result.time === -2 ? raceLongTime + forfeitPenalty : result.time) - race.stdMean) / race.stdDev;
         });
     }
 
