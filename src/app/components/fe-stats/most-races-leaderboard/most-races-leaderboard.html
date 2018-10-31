@@ -1,0 +1,23 @@
+<h1 class="press-start text-center mt-5">
+    MOST RACES RUN
+</h1>
+<div class="container-fluid race-container mt-3">
+    <div class="row mb-3">
+        <div class="col-sm-4 header-cell" [ngClass]="{ 'selected': selected === 'lastWeek' }" (click)="switchActive('lastWeek')">Last Week</div>
+        <div class="col-sm-4 header-cell" [ngClass]="{ 'selected': selected === 'lastMonth' }" (click)="switchActive('lastMonth')">Last Month</div>
+        <div class="col-sm-4 header-cell" [ngClass]="{ 'selected': selected === 'allTime' }" (click)="switchActive('allTime')">All Time</div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-sm-12 d-flex justify-content-center">
+            <div class="paginated-cell mr-2 ml-2" *ngFor="let cell of paginatedItems; index as i" [ngClass]="{ 'active-cell': page === i + 1 }" (click)="switchPage(i + 1)">
+                {{ i + 1 }}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4 d-flex align-items-center mb-2" *ngFor="let racer of paginatedItems[page - 1]; index as i">
+            <span class="press-start num-of-races">{{ racer.races }}</span>
+            <span class="audiowide racer-title">#{{ ( (page - 1) * PAGELENGTH ) + i + 1 }} - {{ racer.name }}</span>
+        </div>
+    </div>
+</div>

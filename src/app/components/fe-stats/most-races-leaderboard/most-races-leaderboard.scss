@@ -1,0 +1,36 @@
+.race-container {
+    border: 1px solid #010059;
+}
+
+.num-of-races {
+    background-color: #010059;
+    color: #eee;
+    padding: 10px;
+    margin-right: 10px
+}
+
+.header-cell {
+    text-align: center;
+    transition: 0.3s all;
+    border: 1px solid #010059;
+}
+
+.selected {
+    background-color: #010059;
+    color: #eee;
+}
+
+.paginated-cell {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #010059;
+    transition: 0.3s all;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.active-cell {
+    background-color: #010059;
+    color: #eee;
+}

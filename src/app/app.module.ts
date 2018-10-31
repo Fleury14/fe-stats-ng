@@ -9,9 +9,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
-import { ZScoreLeaderboard } from './components/fe-stats/zScore-leaderboard/zScore-leaderboard';
+// import { ZScoreLeaderboard } from './components/fe-stats/zScore-leaderboard/zScore-leaderboard';
 
 import { AppRoutingModule, routingComponents } from './app.routing.module';
+import { FeStatsModule } from './components/fe-stats/fe-stats.module';
 
 import { RaceService } from './services/race.service';
 import { PlayerService } from './services/player.service';
@@ -23,10 +24,10 @@ import { TimeService } from './services/time.service';
     NavComponent,
     routingComponents,
     FooterComponent,
-    ZScoreLeaderboard
   ],
   imports: [
-    BrowserModule, BrowserAnimationsModule, AppRoutingModule, HttpClientModule, NgbModule, FormsModule, NgxChartsModule
+    BrowserModule, BrowserAnimationsModule, AppRoutingModule, HttpClientModule, NgbModule, FormsModule, NgxChartsModule,
+    FeStatsModule
   ],
   providers: [RaceService, PlayerService, TimeService],
   bootstrap: [AppComponent]
