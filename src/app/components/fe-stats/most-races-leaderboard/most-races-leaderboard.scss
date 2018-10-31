@@ -1,3 +1,7 @@
+.race-container {
+    border: 1px solid #010059;
+}
+
 .num-of-races {
     background-color: #010059;
     color: #eee;
@@ -12,6 +16,21 @@
 }
 
 .selected {
+    background-color: #010059;
+    color: #eee;
+}
+
+.paginated-cell {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #010059;
+    transition: 0.3s all;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.active-cell {
     background-color: #010059;
     color: #eee;
 }
