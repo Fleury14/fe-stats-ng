@@ -21,12 +21,20 @@ export class FeStatsComponent implements OnInit {
       lastWeek: [],
       lastMonth: [],
       allTime: []
-    }
+    },
+    lastWeek: [],
+    lastMonth: [],
+    allTime: []
   };
   public zScoreLeaders = {
     lastWeek: [],
     lastMonth: [],
     allTime: [],
+  }
+  public mostRaces = {
+    lastWeek: [],
+    lastMonth: [],
+    allTime: []
   }
   public numCount = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
   public raceFlags = new FlagStats();
@@ -58,16 +66,27 @@ export class FeStatsComponent implements OnInit {
           if((Date.now() - race.date * 1000) / 1000 < 2592000) this.racetypes.zScoreHigh.lastMonth.push(race);
           this.racetypes.zScoreHigh.allTime.push(race);
         }
+
+        if((Date.now() - race.date * 1000) / 1000 < 604800) this.racetypes.lastWeek.push(race);
+        if((Date.now() - race.date * 1000) / 1000 < 2592000) this.racetypes.lastMonth.push(race);
+        this.racetypes.allTime.push(race);
         
       });
       this._parseZScoreLeaderboard('lastWeek');
       this._parseZScoreLeaderboard('lastMonth');
       this._parseZScoreLeaderboard('allTime');
+      this._parseRaceCount(this.racetypes.lastWeek, 'lastWeek');
+      this._parseRaceCount(this.racetypes.lastMonth, 'lastMonth');
+      this._parseRaceCount(this.racetypes.allTime, 'allTime');
+      this.mostRaces.lastWeek.sort(this._mostRacesCmp);
+      this.mostRaces.lastMonth.sort(this._mostRacesCmp);
+      this.mostRaces.allTime.sort(this._mostRacesCmp);
+
       this.racetypes.qual.sort(this.winningTimeCmp);
       this.racetypes.ro32.sort(this.winningTimeCmp);
       this.racetypes.ro16.sort(this.winningTimeCmp);
       // console.log('flags:', this.raceFlags);
-
+      console.log('last week', this.mostRaces.lastWeek, 'last month', this.mostRaces.lastMonth, 'all time', this.mostRaces.allTime);
     });
   }
 
@@ -87,6 +106,10 @@ export class FeStatsComponent implements OnInit {
 
       return race1Time - race2Time;
   
+  }
+
+  private _mostRacesCmp(racer1, racer2) {
+    return racer2.races - racer1.races;
   }
 
   private _parseRaceFlags(race) {
@@ -177,6 +200,17 @@ export class FeStatsComponent implements OnInit {
 
   private _sortZScoreArray(arr) {
     arr.sort( (a, b) => a.zScore - b.zScore);
+  }
+
+  private _parseRaceCount(raceArr, field) {
+    raceArr.forEach(race => {
+      race.results.forEach(result => {
+        if(this.mostRaces[field].filter(stat => stat.name === result.player).length === 0) this.mostRaces[field].push({ name: result.player, races: 0 });
+        this.mostRaces[field].forEach(racer => {
+          if(racer.name === result.player) racer.races++;
+        });
+      })
+    })
   }
 
 }
