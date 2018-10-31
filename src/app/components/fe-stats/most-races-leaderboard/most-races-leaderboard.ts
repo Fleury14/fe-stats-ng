@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
     selector: 'fes-most-races',
@@ -6,6 +6,16 @@ import { Component } from '@angular/core';
     styleUrls: [ './most-races-leaderboard.scss' ]
 })
 
-export class MostRacesLeaderboard {
+export class MostRacesLeaderboard implements OnInit {
+    selected: string = 'lastWeek'
+    @Input() data: any;
+    
+    ngOnInit() {
+        console.log('data recieved', this.data);
+    }
+
+    public switchActive(flag: string) {
+        this.selected = flag;
+    }
     
 }

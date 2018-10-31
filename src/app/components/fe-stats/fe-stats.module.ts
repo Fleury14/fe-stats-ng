@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 
 @NgModule({
     declarations: [ MostRacesLeaderboard, ZScoreLeaderboard ],
+    exports: [ MostRacesLeaderboard, ZScoreLeaderboard ],
     imports: [ CommonModule ]
 })
 

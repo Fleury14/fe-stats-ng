@@ -1,0 +1,17 @@
+.num-of-races {
+    background-color: #010059;
+    color: #eee;
+    padding: 10px;
+    margin-right: 10px
+}
+
+.header-cell {
+    text-align: center;
+    transition: 0.3s all;
+    border: 1px solid #010059;
+}
+
+.selected {
+    background-color: #010059;
+    color: #eee;
+}

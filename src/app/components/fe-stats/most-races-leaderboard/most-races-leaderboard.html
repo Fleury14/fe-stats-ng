@@ -1,1 +1,20 @@
-<h1>Most races leaderboard</h1>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <h1 class="press-start text-center">
+                MOST RACES RUN
+            </h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4 header-cell" [ngClass]="{ 'selected': selected === 'lastWeek' }" (click)="switchActive('lastWeek')">Last Week</div>
+        <div class="col-sm-4 header-cell" [ngClass]="{ 'selected': selected === 'lastMonth' }" (click)="switchActive('lastMonth')">Last Month</div>
+        <div class="col-sm-4 header-cell" [ngClass]="{ 'selected': selected === 'lastAllTime' }" (click)="switchActive('allTime')">All Time</div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4 d-flex align-items-center mb-2" *ngFor="let racer of data[selected]; index as i">
+            <span class="press-start num-of-races">{{ racer.races }}</span>
+            <span class="audiowide racer-title">#{{ i + 1 }} - {{ racer.name }}</span>
+        </div>
+    </div>
+</div>
