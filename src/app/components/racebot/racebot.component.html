@@ -1,4 +1,6 @@
 <div class="racebot-container">
     <h1>RACE BOT STATS</h1>
-    <p>For reals</p>
+    <div *ngIf="racebotData && racebotData.items">
+        <fes-racebot-recent [data]="timeSort(racebotData)"></fes-racebot-recent>
+    </div>
 </div>

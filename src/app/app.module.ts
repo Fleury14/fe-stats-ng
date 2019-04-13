@@ -13,10 +13,12 @@ import { FooterComponent } from './footer/footer.component';
 
 import { AppRoutingModule, routingComponents } from './app.routing.module';
 import { FeStatsModule } from './components/fe-stats/fe-stats.module';
+import { RacebotModule } from './components/racebot/racebot.module';
 
 import { RaceService } from './services/race.service';
 import { PlayerService } from './services/player.service';
 import { TimeService } from './services/time.service';
+import { RaceBotService } from './services/racebot.service';
 
 @NgModule({
   declarations: [
@@ -27,9 +29,9 @@ import { TimeService } from './services/time.service';
   ],
   imports: [
     BrowserModule, BrowserAnimationsModule, AppRoutingModule, HttpClientModule, NgbModule, FormsModule, NgxChartsModule,
-    FeStatsModule
+    FeStatsModule, RacebotModule
   ],
-  providers: [RaceService, PlayerService, TimeService],
+  providers: [RaceService, PlayerService, TimeService, RaceBotService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
