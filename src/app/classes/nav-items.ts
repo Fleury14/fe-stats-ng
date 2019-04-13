@@ -13,9 +13,12 @@ export class NavItems {
     },{
         title: 'Player Rankings',
         url: 'player-rankings'
-    }, {
+    },{
         title: 'Current Races',
         url: 'current-races'
+    },{
+        title: 'Race Bot',
+        url: 'race-bot'
     }];
 
     public getItems():INavItem[] {

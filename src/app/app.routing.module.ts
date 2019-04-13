@@ -6,6 +6,7 @@ import { PlayerStatsComponent } from './components/player-stats/player-stats.com
 import { FeStatsComponent } from './components/fe-stats/fe-stats.component';
 import { PlayerRankingsComponent } from './components/player-rankings/player-rankings.component';
 import { CurrentRacesComponent } from './components/current-races/current-races.component';
+import { RaceBotComponent } from './components/racebot/racebot.component';
 
 const routes:Route[] = [{
     path: 'main',
@@ -26,6 +27,9 @@ const routes:Route[] = [{
     path: 'current-races',
     component: CurrentRacesComponent
 }, {
+    path: 'race-bot',
+    component: RaceBotComponent
+},{
     path: '',
     redirectTo: 'main',
     pathMatch: 'full'
@@ -38,4 +42,4 @@ const routes:Route[] = [{
 
 export class AppRoutingModule {}
 
-export const routingComponents = [ MainComponent, PlayerStatsComponent, FeStatsComponent, PlayerRankingsComponent, CurrentRacesComponent];
+export const routingComponents = [ MainComponent, PlayerStatsComponent, FeStatsComponent, PlayerRankingsComponent, CurrentRacesComponent, RaceBotComponent];
