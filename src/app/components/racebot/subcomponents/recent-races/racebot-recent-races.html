@@ -1,6 +1,61 @@
-<div>
-    <h3>Most recent races</h3>
+<div class="racebot-recent-cont open-sans">
+    <h3 class="text-center">Most recent races</h3>
     <ul>
-        <li *ngFor="let race of recentRaces">{{ race.key }}</li>
+        <li *ngFor="let race of recentRaces; index as i">
+            <div
+                class="racebot-recent-list-cont d-flex flex-column"
+                [ngClass]="{'racebot-recent-list-expand': selected === i}"
+                (click)="selectRace(i)"
+            >
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <p>Race: {{ race.key }}</p>
+                        </div>
+                        <div class="col-sm-4">
+                            <p class="text-center">{{ race.details.status }}</p>
+                        </div>
+                        <div class="col-sm-4">
+                            <p>Date Created: {{ race.details.created | date:'medium' }}</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div *ngIf="selected === i" class="race-selected-row container-fluid">
+                    <div class="row">
+                        <div class="col-sm-4 p-2">
+                            <div class="d-flex">
+                                <p class="w-50 text-center">Created By:</p>
+                                <p class="w-50 text-center">{{ race.details.creator.name }}</p>
+                            </div>
+                            <div class="d-flex">
+                                <p class="w-50 text-center">Entrants:</p>
+                                <p class="w-50 text-center">{{ race.details.entrants.length }}</p>
+                            </div>
+                            <div class="d-flex">
+                                <p class="w-50 text-center">Game:</p>
+                                <p class="w-50 text-center">{{ race.details.game }}</p>
+                            </div>
+                            <div class="d-flex">
+                                <p class="w-50 text-center">Server:</p>
+                                <p class="w-50 text-center">{{ race.details.guild.name }}</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 p-2">
+                            <p *ngIf="race.details.finishers.length === 0">Nobody has finished</p>
+                            <ol>
+                                <li *ngFor="let finisher of race.details.finishers">
+                                    <p>{{ finisher.name }}</p>
+                                </li>
+                            </ol>
+                        </div>
+                        <div class="col-sm-4 p-2">
+                            <span *ngIf="race.details.async" class="badge badge-primary">ASYNC</span>
+                            <span *ngIf="race.details.mode === '2v2'" class="badge badge-primary">2v2</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
     </ul>
 </div>

@@ -1,0 +1,35 @@
+.racebot-recent-cont {
+    ul {
+        list-style: none;
+    }
+}
+
+.racebot-recent-list-cont {
+    background-color: #010065;
+    min-height: 40px;
+    height: 100%;
+    padding: 8px;
+    margin-bottom: 2px;
+    color: #eee;
+
+    .race-row {
+        height: 40px;
+    }
+
+    h5 {
+        color: #eee;
+        font-size: 16px;
+        margin: 0;
+    }
+
+    p {
+        color: #eee;
+        margin: 0;
+        font-size: 12px;
+    }
+}
+
+.racebot-recent-list-expand {
+    min-height: 200px;
+    height: 100%;
+}
