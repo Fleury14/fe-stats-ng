@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RaceBotService } from '../../services/racebot.service';
-import { sortRacesByTime } from './helpers/sortRacesByTime';
+import { sortRacesByTime, onlyFERaces } from './helpers';
 
 @Component({
     selector: 'fes-racebot',
@@ -15,7 +15,7 @@ export class RaceBotComponent implements OnInit {
 
     ngOnInit() {
         this._racebot.getAllRaces().subscribe(data => {
-            this.racebotData = data;
+            this.racebotData = onlyFERaces(data);
         });
         
         // temp fake data for parsing

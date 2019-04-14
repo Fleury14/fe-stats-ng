@@ -1,5 +1,6 @@
 <div class="racebot-container">
-    <h1>RACE BOT STATS</h1>
+    <h1 class="audio-wide text-center">RACE BOT STATS</h1>
+    <p class="text-center">This sections covers stats for races run by the discord bot developed by Supremacy.</p>
     <div *ngIf="racebotData && racebotData.items">
         <fes-racebot-recent [data]="timeSort(racebotData)"></fes-racebot-recent>
     </div>
