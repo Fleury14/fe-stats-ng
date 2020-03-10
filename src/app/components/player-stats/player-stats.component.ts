@@ -242,11 +242,16 @@ export class PlayerStatsComponent implements OnInit, OnDestroy {
                 wins: 0,
                 losses: 0,
               },
+              2020: {months: []},
               2019: {months: []},
               2018: {months: []},
               2017: {months: []}
             });
             for (let i = 0; i < 12; i++) {
+              this.opponentWinLoss[this.opponentWinLoss.length - 1][2020].months.push({
+                wins: 0,
+                losses: 0
+              });
               this.opponentWinLoss[this.opponentWinLoss.length - 1][2019].months.push({
                 wins: 0,
                 losses: 0
