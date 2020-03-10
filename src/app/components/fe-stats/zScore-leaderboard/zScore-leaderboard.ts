@@ -11,8 +11,6 @@ export class ZScoreLeaderboard implements OnInit {
     @Input() data: any;
 
     ngOnInit() {
-        console.log('data recieved', this.data);
-        console.log(this.data[this.selected]);
     }
     
     public switchActive(flag: string) {

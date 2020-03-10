@@ -86,7 +86,6 @@ export class FeStatsComponent implements OnInit {
       this.racetypes.ro32.sort(this.winningTimeCmp);
       this.racetypes.ro16.sort(this.winningTimeCmp);
       // console.log('flags:', this.raceFlags);
-      console.log('last week', this.mostRaces.lastWeek, 'last month', this.mostRaces.lastMonth, 'all time', this.mostRaces.allTime);
     });
   }
 
@@ -187,7 +186,7 @@ export class FeStatsComponent implements OnInit {
           this.zScoreLeaders[field].push({ name: result.player, zScore: result.zScore, date: race.date });
           this._sortZScoreArray(this.zScoreLeaders[field]);
         } else {
-          if(this.zScoreLeaders[field][this.zScoreLeaders.lastWeek.length - 1].zScore > result.zScore) {
+          if(this.zScoreLeaders[field][this.zScoreLeaders[field].length - 1].zScore > result.zScore) {
             this.zScoreLeaders[field].pop();
             this.zScoreLeaders[field].push({ name: result.player, zScore: result.zScore, date: race.date });
             this._sortZScoreArray(this.zScoreLeaders[field]);
